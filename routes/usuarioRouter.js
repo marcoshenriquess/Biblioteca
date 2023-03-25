@@ -15,7 +15,7 @@ class UserRouter{
         this.#router = express.Router();
         let ctrl = new UserController();
         this.#router.get('/',ctrl.UserView);
-        this.#router.get('/cadastrar',ctrl.UserCadastro);
+        this.#router.get('/cadastro',ctrl.UserCadastro);
         this.#router.get('/lista',ctrl.UserLista);
     }
 }

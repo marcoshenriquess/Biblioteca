@@ -6,7 +6,7 @@ class UserController{
         res.render('usuario/home', { });
     }
     UserCadastro(req,res){
-        res.render('usuario/cadastrar', { });
+        res.render('usuario/cadastro', { });
     }
     UserLista(Req,res) {
         res.render('usuario/lista', { });
