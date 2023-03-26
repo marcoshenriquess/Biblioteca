@@ -1,25 +1,64 @@
-<div class="cx-cadastro">
-    <div class="cx-cadastro-tilt">
-        <h1>Cadastrar Exemplar</h1>
+<div class="cx-form shadow-none p-3 mb-5 bg-light rounded">
+    <div class="cx-tilt-form">
+        <span>
+            <p>Cadastrar Exemplar</p>
+        </span>
     </div>
-    <div class="cx-cadastro-form">
-        <form>
-            <div class="cx-inpt-label">
-                <input type="text" placeholder="Preencher aqui">
-                <input type="text" placeholder="Preencher aqui">
+    <form class="cadastro-usu shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="row w-100">
+            <div class="col-7">
+                <label for="Latitulo">Titulo:</label>
+                <input class="form-control tam-inpt" type="text" id="inpttitulolivro" name="inpttitulolivro"
+                    placeholder="Informe o titulo">
             </div>
-            <div class="cx-inpt-label">
-                <input type="text" placeholder="Preencher aqui">
-                <input type="text" placeholder="Preencher aqui">
+
+            <div class="col-5">
+                <label for="Laedicao">Edição:</label>
+                <input class="form-control tam-inpt" type="text" id="inptedicaolivro" name="inptedicaolivro"
+                    placeholder="Informe a edicao">
             </div>
-            <div class="cx-inpt-label">
-                <input type="text" placeholder="Preencher aqui">
-                <input type="text" placeholder="Preencher aqui">
+
+            <div class="col-7">
+                <label for="Laautor">Autor:</label>
+                <input class="form-control tam-inpt" type="text" id="inptautorlivro" name="inptautorlivro"
+                    placeholder="Informe o autor">
             </div>
-            <div class="cx-inpt-label">
-                <input type="text" placeholder="Preencher aqui">
-                <input type="text" placeholder="Preencher aqui">
+
+            <div class="col-5">
+                <label for="Laedata">Data de lançamento:</label>
+                <input class="form-control tam-inpt" type="date" id="inptedatalivro" name="inptedatalivro"
+                    placeholder="Informe a data">
             </div>
-        </form>
-    </div>
+            <div class="col-7">
+                <label for="Laeditora">Editora:</label>
+                <input class="form-control tam-inpt" type="text" id="inpteditoralivro" name="inpteditoralivro"
+                    placeholder="Informe o editora">
+            </div>
+            <div class="col-5">
+                <label for="Launidade">Unidade do livro:</label>
+                <input class="form-control tam-inpt" type="text" id="inpte/unidadelivro" name="inptunidadelivro"
+                    placeholder="Informe a unidade ex: Campus I">
+            </div>
+
+            <div class="" style="width: 100%;">
+                <label for="gen-liv">Genero:</label>
+                <select class="gen-liv form-select">
+                    <option value="0">Banco de dados</option>
+                    <option value="1">Funcionario</option>
+                    <option value="2">Arquitetura e Redes de Computadores</option>
+                    <option value="3">Banco de Dados</option>
+                    <option value="4">Custos e Gestão Financeira</option>
+                    <option value="5">Empreendedorismo</option>
+                    <option value="6">Engenharia de Software</option>
+                    <option value="7">Estratégias em Tecnologia da Informação</option>
+                    <option value="8">Ferramentas de Desenvolvimento para Web</option>
+                    <option value="9">Gestão da Segurança de TI</option>
+                </select>
+            </div>
+            <div class="cx-inpt-form cx-bt" style="display: flex; justify-content: end; margin: 10px;">
+                <button type="submit" class="btn btn-primary btn-cad">Cadastrar</button>
+                <button type="submit" class="btn btn-primary btn-can">Cancelar</button>
+            </div>
+        </div>
+    </form>
 </div>
