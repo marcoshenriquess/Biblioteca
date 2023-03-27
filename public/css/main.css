@@ -115,7 +115,13 @@ aside {
     width: 90%;
     margin: 10px;
 }
-
+input:focus, select:focus{
+    color:#6e707e !important;
+    background-color:#fff !important;
+    border-color:rgb(134, 90, 33, 0.25) !important;
+    outline:0 !important;
+    box-shadow:0 0 0 .2rem rgb(134, 90, 33, 0.25) !important;
+}
 .cx-bt .btn-cad {
     background-color: rgb(134, 90, 33) !important;
     margin: 10px !important;
