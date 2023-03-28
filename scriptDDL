@@ -1,0 +1,261 @@
+
+-- -----------------------------------------------------
+-- Table `usuario`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `usuario` (
+  `usu_cod` INT NOT NULL AUTO_INCREMENT,
+  `nome` VARCHAR(90) NOT NULL,
+  `cpf` VARCHAR(14) NOT NULL,
+  `email` VARCHAR(90) NOT NULL,
+  `telefone` VARCHAR(18) NOT NULL,
+  PRIMARY KEY (`usu_cod`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `emprestimo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `emprestimo` (
+  `Emp_num` INT NOT NULL,
+  `dt_devolucao` DATETIME NOT NULL,
+  `data` DATETIME NOT NULL,
+  `usu_cod` INT NOT NULL,
+  PRIMARY KEY (`Emp_num`),
+  INDEX `fk_emprestimo_usuario1_idx` (`usu_cod` ASC) VISIBLE,
+  CONSTRAINT `fk_emprestimo_usuario1`
+    FOREIGN KEY (`usu_cod`)
+    REFERENCES `usuario` (`usu_cod`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `editora`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `editora` (
+  `cod` INT NOT NULL,
+  `nome` VARCHAR(90) NOT NULL,
+  `email` VARCHAR(90) NOT NULL,
+  PRIMARY KEY (`cod`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `titulo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `titulo` (
+  `tit_cod` INT NOT NULL,
+  `descricao` VARCHAR(90) NOT NULL,
+  `sinopse` VARCHAR(255) NOT NULL,
+  `editora_cod` INT NOT NULL,
+  PRIMARY KEY (`tit_cod`),
+  INDEX `fk_titulo_editora1_idx` (`editora_cod` ASC) VISIBLE,
+  CONSTRAINT `fk_titulo_editora1`
+    FOREIGN KEY (`editora_cod`)
+    REFERENCES `editora` (`cod`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Entrada`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Entrada` (
+  `cod` INT NOT NULL,
+  `dt_entra` DATETIME NOT NULL,
+  `valor` DECIMAL(9,4) NOT NULL,
+  PRIMARY KEY (`cod`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Motivos_Baixa`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Motivos_Baixa` (
+  `cod` INT NOT NULL,
+  `Motivo` LONGTEXT NOT NULL,
+  PRIMARY KEY (`cod`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Baixas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Baixas` (
+  `cod` INT NOT NULL,
+  `dt_baixa` DATETIME NOT NULL,
+  `Motivos_Baixa_cod` INT NOT NULL,
+  PRIMARY KEY (`cod`, `Motivos_Baixa_cod`),
+  INDEX `fk_Baixas_Motivos_Baixa1_idx` (`Motivos_Baixa_cod` ASC) VISIBLE,
+  CONSTRAINT `fk_Baixas_Motivos_Baixa1`
+    FOREIGN KEY (`Motivos_Baixa_cod`)
+    REFERENCES `Motivos_Baixa` (`cod`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `exemplar`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `exemplar` (
+  `exe_cod` INT NOT NULL,
+  `edicao` INT NOT NULL,
+  `ano` DATE NOT NULL,
+  `titulo_tit_cod` INT NOT NULL,
+  `Entrada_cod` INT NOT NULL,
+  `Baixas_cod` INT NOT NULL,
+  PRIMARY KEY (`exe_cod`),
+  INDEX `fk_exemplar_titulo1_idx` (`titulo_tit_cod` ASC) VISIBLE,
+  INDEX `fk_exemplar_Entrada1_idx` (`Entrada_cod` ASC) VISIBLE,
+  INDEX `fk_exemplar_Baixas1_idx` (`Baixas_cod` ASC) VISIBLE,
+  CONSTRAINT `fk_exemplar_titulo1`
+    FOREIGN KEY (`titulo_tit_cod`)
+    REFERENCES `titulo` (`tit_cod`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_exemplar_Entrada1`
+    FOREIGN KEY (`Entrada_cod`)
+    REFERENCES `Entrada` (`cod`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_exemplar_Baixas1`
+    FOREIGN KEY (`Baixas_cod`)
+    REFERENCES `Baixas` (`cod`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `exemplar_has_emprestimo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `exemplar_has_emprestimo` (
+  `tit_cod` INT NOT NULL,
+  `emp_num` INT NOT NULL,
+  `dt_Devol` DATETIME NOT NULL,
+  PRIMARY KEY (`tit_cod`, `emp_num`),
+  INDEX `fk_exemplar_has_emprestimo_emprestimo1_idx` (`emp_num` ASC) VISIBLE,
+  INDEX `fk_exemplar_has_emprestimo_exemplar1_idx` (`tit_cod` ASC) VISIBLE,
+  CONSTRAINT `fk_exemplar_has_emprestimo_exemplar1`
+    FOREIGN KEY (`tit_cod`)
+    REFERENCES `exemplar` (`exe_cod`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_exemplar_has_emprestimo_emprestimo1`
+    FOREIGN KEY (`emp_num`)
+    REFERENCES `emprestimo` (`Emp_num`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Autor`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Autor` (
+  `id` INT NOT NULL,
+  `nome` VARCHAR(90) NOT NULL,
+  `nacionalidade` VARCHAR(90) NOT NULL,
+  PRIMARY KEY (`id`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `titulo_has_Autor`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `titulo_has_Autor` (
+  `tit_cod` INT NOT NULL,
+  `Autor_id` INT NOT NULL,
+  PRIMARY KEY (`tit_cod`, `Autor_id`),
+  INDEX `fk_titulo_has_Autor_Autor1_idx` (`Autor_id` ASC) VISIBLE,
+  INDEX `fk_titulo_has_Autor_titulo1_idx` (`tit_cod` ASC) VISIBLE,
+  CONSTRAINT `fk_titulo_has_Autor_titulo1`
+    FOREIGN KEY (`tit_cod`)
+    REFERENCES `titulo` (`tit_cod`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_titulo_has_Autor_Autor1`
+    FOREIGN KEY (`Autor_id`)
+    REFERENCES `Autor` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Assunto`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Assunto` (
+  `cod` INT NOT NULL,
+  `assunto` VARCHAR(45) NOT NULL,
+  PRIMARY KEY (`cod`))
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `Assunto_has_titulo`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `Assunto_has_titulo` (
+  `Assunto_cod` INT NOT NULL,
+  `tit_cod` INT NOT NULL,
+  PRIMARY KEY (`Assunto_cod`, `tit_cod`),
+  INDEX `fk_Assunto_has_titulo_titulo1_idx` (`tit_cod` ASC) VISIBLE,
+  INDEX `fk_Assunto_has_titulo_Assunto1_idx` (`Assunto_cod` ASC) VISIBLE,
+  CONSTRAINT `fk_Assunto_has_titulo_Assunto1`
+    FOREIGN KEY (`Assunto_cod`)
+    REFERENCES `Assunto` (`cod`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_Assunto_has_titulo_titulo1`
+    FOREIGN KEY (`tit_cod`)
+    REFERENCES `titulo` (`tit_cod`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `renovacao`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `renovacao` (
+  `dt_Renov` DATETIME NOT NULL,
+  `dt_Devol` DATETIME NOT NULL,
+  `tit_cod` INT NOT NULL,
+  `emp_num` INT NOT NULL,
+  PRIMARY KEY (`dt_Renov`, `tit_cod`, `emp_num`),
+  INDEX `fk_renovacao_exemplar_has_emprestimo1_idx` (`tit_cod` ASC, `emp_num` ASC) VISIBLE,
+  CONSTRAINT `fk_renovacao_exemplar_has_emprestimo1`
+    FOREIGN KEY (`tit_cod` , `emp_num`)
+    REFERENCES `exemplar_has_emprestimo` (`tit_cod` , `emp_num`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
+
+
+-- -----------------------------------------------------
+-- Table `reservas`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `reservas` (
+  `cod` INT NOT NULL,
+  `dt_reserv` DATETIME NOT NULL,
+  `Status` VARCHAR(20) NOT NULL,
+  `dt_expir` DATETIME NOT NULL,
+  `usuario_usu_cod` INT NOT NULL,
+  `titulo_tit_cod` INT NOT NULL,
+  PRIMARY KEY (`cod`),
+  INDEX `fk_reservas_usuario1_idx` (`usuario_usu_cod` ASC) VISIBLE,
+  INDEX `fk_reservas_titulo1_idx` (`titulo_tit_cod` ASC) VISIBLE,
+  CONSTRAINT `fk_reservas_usuario1`
+    FOREIGN KEY (`usuario_usu_cod`)
+    REFERENCES `usuario` (`usu_cod`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_reservas_titulo1`
+    FOREIGN KEY (`titulo_tit_cod`)
+    REFERENCES `titulo` (`tit_cod`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
