@@ -27,7 +27,7 @@ aside {
 .cx-conteudo-article {
 
     background-color: aliceblue !important;
-    width: 97%;
+    width: 80%;
     height: 95%;
     border-radius: 0px 10px 10px 0px;
     backdrop-filter: blur(10px);
@@ -87,7 +87,7 @@ aside {
 }
 /*----- FORMULARIO CADASTRO -----*/
 .cx-form {
-
+    background-color: aliceblue !important;
     width: 100%;
     height: 100%;
     display: flex;
