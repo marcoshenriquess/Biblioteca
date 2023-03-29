@@ -12,7 +12,7 @@ class LivroController{
     async LivroCadastro(req,res){
         //let livroModel = new LivroModel();
         //let listaPerfil = await perfilModel.listarLivros();
-        res.render('livro/cadastro', { });
+        res.render('livro/cadastro', {lista: listaLivros});
     }
     
     async LivroLista(req,res) {
@@ -29,14 +29,11 @@ class LivroController{
 
         for(let i = 0; i<listaLivros.length; i++){
             listaLiv.push({
-                id: listaLivros[i].livroId,''
+                id: listaLivros[i].livroId,
                 titulo: listaLivros[i].livroTitulo,
-                edicao: listaLivros[i].livroEdicao,
-                autor: listaLivros[i].livroAutor,
-                lancamento: listaLivros[i].livroLancamento,
+                descricao: listaLivros[i].livroDescricao,
+                sinopse: listaLivros[i].livroSinopse,
                 editora: listaLivros[i].livroEditora,
-                lancamento: listaLivros[i].livroUnidade,
-                lancamento: listaLivros[i].livroGenero,
             })
         }
 
@@ -46,9 +43,9 @@ class LivroController{
     async alterarLivro(req, res){
         let ok = false;
         if(req.body != null) {
-            if(req.body.id > 0 && req.body.titulo != null && req.body.edicao != null && req.body.autor != null && req.body.lancamento != null && req.body.editora!= null && req.body.unidade != null && req.body.genero != null) {
+            if(req.body.id > 0 && req.body.titulo != null && req.body.descricao != null && req.body.sinopse != null && req.body.editora != null) {
                 if(req.body.livroId > 0) {
-                    let livro = new LivroModel(req.body.titulo, req.body.edicao, req.body.autor, req.body.lancamento, req.body.editora,req.body.unidade,req.body.genero);
+                    let livro = new LivroModel(req.body.titulo, req.body.descricao, req.body.sinopse, req.body.editora);
                     ok = livro.gravarLivro();
                 }
             }
@@ -61,9 +58,9 @@ class LivroController{
 
         let ok = false;
         if(req.body != null) {
-            if(req.body.titulo != null && req.body.edicao != null && req.body.autor != null && req.body.lancamento != null && req.body.editora!= null && req.body.unidade != null && req.body.genero != null) {
+            if(req.body.titulo != null && req.body.descricao != null && req.body.sinopse != null && req.body.editora != null) {
                 if(req.body.livroId > 0) {
-                    let livro = new LivroModel(0, req.body.titulo, req.body.edicao, req.body.autor, req.body.lancamento, req.body.editora,req.body.unidade,req.body.genero);
+                    let livro = new LivroModel(0, req.body.titulo, req.body.descricao, req.body.sinopse, req.body.editora);
                     ok = livro.gravarLivro();
                 }
             }

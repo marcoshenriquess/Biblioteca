@@ -6,12 +6,9 @@ class LivroModel {
 
     #livroId;
     #livroTitulo;
-    #livroEdicao;
-    #livroAutor;
-    #livroLancamento
+    #livroDescricao;
+    #livroSinopse;
     #livroEditora;
-    #livroUnidade;
-    #livroGenero;
 
     get livroId(){
         return this.#livroId;
@@ -20,7 +17,7 @@ class LivroModel {
     set livroId(livroId) {
         this.#livroId = livroId;
     }
-
+    
     get livroTitulo(){
         return this.#livroTitulo;
     }
@@ -29,29 +26,21 @@ class LivroModel {
         this.#livroTitulo = livroTitulo;
     }
 
-    get livroEdicao(){
-        return this.#livroEdicao;
+    get livroDescricao(){
+        return this.#livroDescricao;
     }
 
-    set livroEdicao(livroEdicao) {
-        this.#livroEdicao = livroEdicao;
+    set livroDescricao(livroDescricao) {
+        this.#livroDescricao = livroDescricao;
+    }    
+
+    get livroSinopse(){
+        return this.#livroSinopse;
     }
 
-    get livroAutor(){
-        return this.#livroAutor;
-    }
-
-    set livroAutor(livroAutor) {
-        this.#livroAutor = livroAutor;
-    } 
-
-    get livroLancamento(){
-        return this.#livroLancamento;
-    }
-
-    set livroLancamento(livroLancamento) {
-        this.#livroLancamento = livroLancamento;
-    }
+    set livroSinopse(livroSinopse) {
+        this.#livroSinopse = livroSinopse;
+    }    
 
     get livroEditora(){
         return this.#livroEditora;
@@ -60,69 +49,50 @@ class LivroModel {
     set livroEditora(livroEditora) {
         this.#livroEditora = livroEditora;
     }
-
-    get livroUnidade(){
-        return this.#livroUnidade;
-    }
-
-    set livroUnidade(livroUnidade) {
-        this.#livroUnidade = livroUnidade;
-    }
-
-    get livroGenero(){
-        return this.#livroGenero;
-    }
-
-    set livroGenero(livroGenero) {
-        this.#livroGenero= livroGenero;
-    } 
     
-    constructor(livroId, livroTitulo, livroEdicao, livroAutor, livroLancamento, livroEditora, livroUnidade, livroGenero){
+    constructor(livroId, livroTitulo, livroDescricao, livroSinopse, livroEditora){
         this.#livroId = livroId;
         this.#livroTitulo = livroTitulo;
-        this.#livroEdicao = livroEdicao;
-        this.#livroAutor = livroAutor;
-        this.#livroLancamento = livroLancamento;
+        this.#livroDescricao = livroDescricao;
+        this.#livroSinopse = livroSinopse;
         this.#livroEditora = livroEditora;
-        this.#livroUnidade = livroUnidade;
-        this.#livroGenero = livroGenero;
     }
 
     async buscarLivro(id){
-        let sql = "select * from tb_livros where liv_id = ?"
+        let sql = "select * from titulo where tit_cod = ?"
         let valores = [id];
 
         let rows = await conexao.ExecutaComando(sql, valores);
         if(rows.length > 0){
-            return new LivroModel(rows[0]["liv_id"],rows[0]["liv_titulo"],rows[0]["liv_edicao"],rows[0]["liv_autor"],rows[0]["liv_lancamento"],rows[0]["liv_editora"],rows[0]["liv_unidade"],rows[0]["liv_genero"]);
+            return new LivroModel(rows[0]["tit_cod"],rows[0]["descricao"],rows[0]["sinopse"],rows[0]["editora_cod"],rows[0]["tit_titulo"],rows[0]["tit_editora"]);
         }
         return null;
     }
 
     async listarlivros() {
-        let sql = "select * from tb_livros";
+        let sql = "select * from titulo";
         let listaRetorno = [];
         let rows = await conexao.ExecutaComando(sql);
 
         for(var i= 0; i < rows.length; i++){
             let row = rows[i];
-            listaRetorno.push(new LivroModel(row["liv_id"], row["liv_titulo"],row["liv_edicao"],row["liv_autor"],row["liv_lancamento"],row["liv_editora"],row["liv_unidade"],row["liv_genero"]));
+            listaRetorno.push(new LivroModel(row["tit_cod"], row["descricao"],row["sinopse"],row["editora_cod"],rows["tit_titulo"],rows["tit_editora"]));
         }
 
         return listaRetorno;
     }
 
-    async gravarUsuario() {
+    async gravarLivro() {
         let result = false;
         if(this.#livroId == 0){
-            let sql = "insert into tb_livros (liv_titulo, liv_edicao, liv_autor, liv_lancamento, liv_editora, liv_unidade, liv_genero) values (?, ?, ?, ?, ?, ?, ?)";
-            let valores = [this.#livroTitulo, this.#livroEdicao, this.#livroAutor, this.#livroLancamento, this.#livroEditora, this.#livroUnidade, this.#livroGenero];
+            let sql = "insert into titulo (tit_cod, descricao, sinopse, editora_cod) values (?, ?, ?, ?)";
+            let valores = [this.#livroTitulo, this.#livroDescricao, this.#livroSinopse, this.#livroEditora];
     
             result = await conexao.ExecutaComandoNonQuery(sql, valores);
         }
         else{
-            let sql = "update tb_livros set liv_titulo = ?, liv_edicao = ?, liv_autor = ?, liv_lancamento = ?, liv_editora = ?, liv_unidade = ?, liv_genero = ? ,where liv_id = ?";
-            let valores = [this.#livroTitulo, this.#livroEdicao, this.#livroAutor, this.#livroLancamento, this.#livroEditora, this.#livroUnidade, this.#livroGenero];
+            let sql = "update titulo set tit_cod = ?, descricao = ?, sinopse = ?, editora_cod = ?, where tit_cod = ?";
+            let valores = [this.#livroTitulo, this.#livroDescricao, this.#livroSinopse, this.#livroEditora];
 
             result = await conexao.ExecutaComandoNonQuery(sql, valores);
         }
@@ -132,7 +102,7 @@ class LivroModel {
     }
 
     async deletarLivro(livroId) {
-        let sql = "delete from tb_livros where liv_id = ?"
+        let sql = "delete from titulo where tit_cod = ?"
         let valores = [livroId];
 
         let result = conexao.ExecutaComandoNonQuery(sql, valores);
