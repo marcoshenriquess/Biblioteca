@@ -10,9 +10,9 @@ class LivroController{
     }
 
     async LivroCadastro(req,res){
-        //let livroModel = new LivroModel();
-        //let listaPerfil = await perfilModel.listarLivros();
-        res.render('livro/cadastro', {lista: listaLivros});
+        let livroModel = new LivroModel();
+        let cadLivros = await livroModel.gravarLivro();
+        res.render('livro/cadastro', {lista: cadLivros});
     }
     
     async LivroLista(req,res) {
@@ -55,17 +55,13 @@ class LivroController{
     }
 
     async gravarLivro(req, res) {
-
         let ok = false;
         if(req.body != null) {
             if(req.body.titulo != null && req.body.descricao != null && req.body.sinopse != null && req.body.editora != null) {
-                if(req.body.livroId > 0) {
-                    let livro = new LivroModel(0, req.body.titulo, req.body.descricao, req.body.sinopse, req.body.editora);
-                    ok = livro.gravarLivro();
-                }
+                let livro = new LivroModel(0, req.body.titulo, req.body.descricao, req.body.sinopse, req.body.editora);
+                ok = livro.gravarLivro(); 
             }
         }
-
         res.send({ ok: ok})
     }
 

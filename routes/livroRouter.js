@@ -16,6 +16,7 @@ class LivroRota{
         let ctrl = new LivroController();
         this.#router.get('/',ctrl.LivroView);
         this.#router.get('/cadastro',ctrl.LivroCadastro);
+        this.#router.post('/cadastro',ctrl.gravarLivro);
         this.#router.get('/lista',ctrl.LivroLista);
     }
 }

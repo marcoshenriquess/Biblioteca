@@ -9,32 +9,30 @@ document.addEventListener("DOMContentLoaded", function() {
 
 function gravarLivro() {
 
-    limparErros();
-    
+    limparErros();    
     var inputTitulo = document.getElementById("titulo");
     var inputEditora = document.getElementById("editora");
     var inputSinopse = document.getElementById("sinopse");
     var inputDescricao = document.getElementById("descricao");
-
-    var listaErros = [];
+    var liErros = [];
 
     if(inputTitulo.value == "" || inputTitulo.value == undefined || inputTitulo.value == null){
-        listaErros.push("inputTitulo");
+        liErros.push("titulo");
     }
     
     if(inputEditora.value == "" || inputEditora.value == undefined || inputEditora.value == null){
-        listaErros.push("inputEditora");
+        liErros.push("editora");
     }
 
     if(inputSinopse.value == "" || inputSinopse.value == undefined || inputSinopse.value == null){
-        listaErros.push("inputSinopse");
+        liErros.push("sinopse");
     }
 
     if(inputDescricao.value == "" || inputDescricao.value == undefined || inputDescricao.value == null){
-        listaErros.push("inputDescricao");
+        liErros.push("descricao");
     }
 
-    if(listaErros.length == 0){
+    if(liErros.length == 0){
 
         var data = {
             titulo: inputTitulo.value,
@@ -62,10 +60,11 @@ function gravarLivro() {
 
                 document.getElementById("sucesso").innerText = "Livro gravado com sucesso!";
                 document.getElementById("sucesso").style = "display:block";
+                console.log("teste sucesso")
             }
             else{
-                document.getElementById("erros").innerText = "Erro ao gravar livro!";
-                document.getElementById("erros").style = "display:block";
+                document.getElementById("erro").innerText = "Erro ao gravar livro!";
+                document.getElementById("erro").style = "display:block";
             }
         })
         .catch(e=> {
@@ -74,30 +73,29 @@ function gravarLivro() {
 
     }
     else{
-        mostrarErros(listaErros)
+        mostrarErros(liErros)
     }
 }
 
+function mostrarErros(listaE) {
+    for(var i = 0; i<listaE.length; i++){
+        let id = listaE[i];
 
-function mostrarErros(lista) {
-    for(var i = 0; i<lista.length; i++){
-        let id = lista[i];
+        document.getElementById(id).classList.add("cErro");
 
-        document.getElementById(id).classList.add("campoErro");
+        document.getElementById("erro").innerText = "Preencha corretamente os campos destacados abaixo:";
 
-        document.getElementById("erros").innerText = "Preencha corretamente os campos destacados abaixo:";
-
-        document.getElementById("erros").style= "display:block";
+        document.getElementById("erro").style= "display:block";
     }
 }
 
 function limparErros() {
-    document.getElementById("inputTitulo").classList.remove("campoErro");
-    document.getElementById("inputDescricao").classList.remove("campoErro");
-    document.getElementById("inputSinopse").classList.remove("campoErro");
-    document.getElementById("inputEditora").classList.remove("campoErro");
+    document.getElementById("titulo").classList.remove("cErro");
+    document.getElementById("descricao").classList.remove("cErro");
+    document.getElementById("sinopse").classList.remove("cErro");
+    document.getElementById("editora").classList.remove("cErro");
    
-    document.getElementById("erros").style = "display:none";
+    document.getElementById("erro").style = "display:none";
     document.getElementById("sucesso").style = "display:none";
 }
 

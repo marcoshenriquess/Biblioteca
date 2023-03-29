@@ -85,13 +85,13 @@ class LivroModel {
     async gravarLivro() {
         let result = false;
         if(this.#livroId == 0){
-            let sql = "insert into titulo (tit_cod, descricao, sinopse, editora_cod) values (?, ?, ?, ?)";
+            let sql = "insert into titulo (tit_titulo, descricao, sinopse, tit_editora) values (?, ?, ?, ?)";
             let valores = [this.#livroTitulo, this.#livroDescricao, this.#livroSinopse, this.#livroEditora];
     
             result = await conexao.ExecutaComandoNonQuery(sql, valores);
         }
         else{
-            let sql = "update titulo set tit_cod = ?, descricao = ?, sinopse = ?, editora_cod = ?, where tit_cod = ?";
+            let sql = "update titulo set tit_titulo = ?, descricao = ?, sinopse = ?, tit_editora = ?";
             let valores = [this.#livroTitulo, this.#livroDescricao, this.#livroSinopse, this.#livroEditora];
 
             result = await conexao.ExecutaComandoNonQuery(sql, valores);
