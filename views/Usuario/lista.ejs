@@ -1,48 +1,9 @@
-<h1 class="text-center text-black-50 pt-5">Lista Usuarios</h1>
-<section>
-  <div class="row mx-5 pt-5">
-    <div class="d-flex">
-      <div class="col-3 d-flex align-items-center">
-        <label for="filtro">Filtro:</label>
-        <select id="filtro" class="form-select">
-          <option value="0">Nome</option>
-          <option value="1">N° Matricula</option>
-          <option value="2">Curso</option>
-        </select>
-      </div>
-      <div class="col-3 d-flex align-items-center">
-        <label for="buscanome">Nome:</label>
-        <input class="form-control" type="text" id="buscanome" name="buscanome" placeholder="Insira o nome para buscar">
-      </div>
-
-      <div class="col-3 d-flex justify-content-center">
-        <button class="btn btn-info mb-0"> Buscar</button>
-      </div>
-    </div>
+<div class="cx-list">
+  <div class="cx-list-tilt">
+    <h1 class="text-center text-black-50 pt-1">Lista Usuarios</h1>
   </div>
-
-  <div class="row mx-5 mt-5">
-    <div class="col-3">
-      <p><strong>nome:</strong>Fulano</p>
-    </div>
-    <div class="col-3">
-      <p><strong>n° Matricura:</strong>58495</p>
-    </div>
-    <div class="col-3">
-      <p><strong>Data de nasc:</strong>15/04/2001</p>
-    </div>
-    <div class="col-3">
-      <p><strong>Disciplina:</strong>BSI</p>
-    </div>
-    <hr>
+  
+  <div class="cx-list-users shadow-lg p-3 mb-5 bg-white rounded">
+  
   </div>
-</section>
-
-<script>
-  jQuery(document).ready(function () {
-    jQuery('#filtro').change(function () {
-      var texto = jQuery('#filtro option:selected').html();
-      console.log('textooo:', texto);
-    })
-  })
-</script>
+</div>

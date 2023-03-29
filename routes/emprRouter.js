@@ -1,7 +1,7 @@
 const express = require('express');
-const ExemController = require('../controller/exemplarController');
+const EmprController = require('../controller/emprController');
 
-class ExemRota{
+class EmprRota{
 
     #router;
 
@@ -14,9 +14,9 @@ class ExemRota{
 
     constructor() {
         this.#router = express.Router();
-        const ctrl = new ExemController();
-        this.#router.get("/cadastro", ctrl.ExemCad);
+        const ctrl = new EmprController();
+        this.#router.get("/", ctrl.EmpreCad);
     }
 
 }
-module.exports = ExemRota;
+module.exports = EmprRota;

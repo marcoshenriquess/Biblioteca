@@ -1,6 +1,6 @@
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
-const ExemRota = require('./routes/exemplarRouter');
+const EmprRota = require('./routes/emprRouter');
 const HomeRota = require('./routes/homeRouter');
 const LivroRota = require('./routes/livroRouter');
 const UserRouter = require('./routes/usuarioRouter');
@@ -23,8 +23,8 @@ let UserR = new UserRouter();
 app.use('/usuario',UserR.router);
 let LivroR = new LivroRota();
 app.use('/livro',LivroR.router);
-let ExemR = new ExemRota();
-app.use('/exemplar',ExemR.router);
+let EmprR = new EmprRota();
+app.use('/emprestimo',EmprR.router);
 
 const server = app.listen('5000', function() {
     console.log('http://localhost:5000');
