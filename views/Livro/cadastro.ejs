@@ -7,40 +7,41 @@
     <form class="cadastro-usu shadow-lg p-3 mb-5 bg-white rounded">
         <div class="row w-100">
             <div class="col-7">
-                <label for="Latitulo">Titulo:</label>
-                <input class="form-control tam-inpt" type="text" id="inpttitulolivro" name="inpttitulolivro"
+                <label for="titulo">Titulo:</label>
+                <input class="form-control tam-inpt" type="text" id="titulo" name="titulo"
                     placeholder="Informe o titulo">
             </div>
 
             <div class="col-5">
-                <label for="Laedicao">Edição:</label>
-                <input class="form-control tam-inpt" type="text" id="inptedicaolivro" name="inptedicaolivro"
-                    placeholder="Informe a edicao">
+                <label for="tit_cod">Cod.Titulo:</label>
+                <input class="form-control tam-inpt" type="text" id="tit_cod" name="tit_cod"
+                    placeholder="Informe o código do titulo">
             </div>
 
             <div class="col-7">
-                <label for="Laautor">Autor:</label>
-                <input class="form-control tam-inpt" type="text" id="inptautorlivro" name="inptautorlivro"
-                    placeholder="Informe o autor">
+                <label for="editora">Editora:</label>
+                <input class="form-control tam-inpt" type="text" id="editora" name="editora"
+                    placeholder="Informe a Editora">
             </div>
 
             <div class="col-5">
-                <label for="Laedata">Data de lançamento:</label>
-                <input class="form-control tam-inpt" type="date" id="inptedatalivro" name="inptedatalivro"
-                    placeholder="Informe a data">
+                <label for="editora_cod">Cod.Editora:</label>
+                <input class="form-control tam-inpt" type="text" id="editora_cod" name="editora_cod"
+                    placeholder="Informe o Codigo">
             </div>
-            <div class="col-7">
-                <label for="Laeditora">Editora:</label>
-                <input class="form-control tam-inpt" type="text" id="inpteditoralivro" name="inpteditoralivro"
-                    placeholder="Informe o editora">
-            </div>
-            <div class="col-5">
-                <label for="Launidade">Unidade do livro:</label>
-                <input class="form-control tam-inpt" type="text" id="inpte/unidadelivro" name="inptunidadelivro"
-                    placeholder="Informe a unidade ex: Campus I">
+            <div class="col-12">
+                <label for="sinopse">Sinopse:</label>
+                <textarea class="form-control tam-inpt" type="text" id="sinopse" name="sinopse"
+                    placeholder="Informe a sinopse"></textarea>
             </div>
 
-            <div class="" style="width: 100%;">
+            <div class="col-12">
+                <label for="descricao">Descrição:</label>
+                <textarea class="form-control tam-inpt" type="text" id="descricao" name="descricao"
+                    placeholder="Informe a descrição"></textarea>
+            </div>
+
+            <!-- <div class="" style="width: 100%;">
                 <label for="gen-liv">Genero:</label>
                 <select class="gen-liv form-select">
                     <option value="0">Banco de dados</option>
@@ -54,7 +55,7 @@
                     <option value="8">Ferramentas de Desenvolvimento para Web</option>
                     <option value="9">Gestão da Segurança de TI</option>
                 </select>
-            </div>
+            </div> -->
             <div class="cx-inpt-form cx-bt" style="display: flex; justify-content: end; margin: 10px;">
                 <button type="submit" class="btn btn-primary btn-cad">Cadastrar</button>
                 <button type="submit" class="btn btn-primary btn-can">Cancelar</button>
