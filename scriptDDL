@@ -8,6 +8,7 @@ CREATE TABLE IF NOT EXISTS `usuario` (
   `cpf` VARCHAR(14) NOT NULL,
   `email` VARCHAR(90) NOT NULL,
   `telefone` VARCHAR(18) NOT NULL,
+   `funcionario` boolean,
   PRIMARY KEY (`usu_cod`))
 ENGINE = InnoDB;
 
