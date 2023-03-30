@@ -24,7 +24,8 @@ aside {
     align-items: center !important;
 }
 
-.cx-conteudo-article {  
+.cx-conteudo-article {
+
     background-color: aliceblue !important;
     width: 80%;
     height: 95%;
@@ -165,28 +166,14 @@ input:focus, select:focus{
 }
 
 /* Lista Usuario CSS */
-.cx-list-tilt{  
-    flex: 1;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.table thead{
+    background-image: url(/img/vetor/bc-couro.jpg) !important;
+    background-repeat: repeat;
+    background-size: contain !important;
+    color: white;
 }
-.cx-list-users{ 
-    flex: 5;
-    width: 80%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+
 label {
     font-size: 18px !important;
     margin: 0 !important;
-}
-.cx-list{
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    flex-direction: column;
 }
