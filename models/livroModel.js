@@ -52,10 +52,10 @@ class LivroModel {
     
     constructor(livroId, livroTitulo, livroDescricao, livroSinopse, livroEditora){
         this.#livroId = livroId;
-        this.#livroTitulo = livroTitulo;
         this.#livroDescricao = livroDescricao;
         this.#livroSinopse = livroSinopse;
         this.#livroEditora = livroEditora;
+        this.#livroTitulo = livroTitulo;
     }
 
     async buscarLivro(id){
@@ -64,7 +64,7 @@ class LivroModel {
 
         let rows = await conexao.ExecutaComando(sql, valores);
         if(rows.length > 0){
-            return new LivroModel(rows[0]["tit_cod"],rows[0]["descricao"],rows[0]["sinopse"],rows[0]["editora_cod"],rows[0]["tit_titulo"],rows[0]["tit_editora"]);
+            return new LivroModel(rows[0]["tit_cod"],rows[0]["tit_titulo"],rows[0]["tit_descricao"],rows[0]["tit_sinopse"],rows[0]["tit_editora"]);
         }
         return null;
     }
@@ -76,7 +76,7 @@ class LivroModel {
 
         for(var i= 0; i < rows.length; i++){
             let row = rows[i];
-            listaRetorno.push(new LivroModel(row["tit_cod"], row["descricao"],row["sinopse"],row["editora_cod"],rows["tit_titulo"],rows["tit_editora"]));
+            listaRetorno.push(new LivroModel(row["tit_cod"], row["tit_titulo"], row["tit_descricao"],row["tit_sinopse"],row["tit_editora"]));
         }
 
         return listaRetorno;
@@ -85,20 +85,18 @@ class LivroModel {
     async gravarLivro() {
         let result = false;
         if(this.#livroId == 0){
-            let sql = "insert into titulo (tit_titulo, descricao, sinopse, tit_editora) values (?, ?, ?, ?)";
+            let sql = "insert into titulo (tit_titulo, tit_descricao, tit_sinopse, tit_editora) values (?, ?, ?, ?)";
             let valores = [this.#livroTitulo, this.#livroDescricao, this.#livroSinopse, this.#livroEditora];
     
             result = await conexao.ExecutaComandoNonQuery(sql, valores);
         }
         else{
-            let sql = "update titulo set tit_titulo = ?, descricao = ?, sinopse = ?, tit_editora = ?";
+            let sql = "update titulo set tit_titulo = ?, tit_descricao = ?, tit_sinopse = ?, tit_editora = ?";
             let valores = [this.#livroTitulo, this.#livroDescricao, this.#livroSinopse, this.#livroEditora];
 
             result = await conexao.ExecutaComandoNonQuery(sql, valores);
         }
-
         return result;
-
     }
 
     async deletarLivro(livroId) {
@@ -111,5 +109,4 @@ class LivroModel {
     }
 
 }
-
 module.exports = LivroModel;

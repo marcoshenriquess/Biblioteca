@@ -30,16 +30,22 @@
       </div>
     </div>-->
 
-    <div class=" col-md-4 col-6">
+    <div class="d-flex col-md-4 col-6">
       <% lista.forEach(function(value,index){ %>
       <div class="d-flex flex-column align-items-center card-livro">
         <div class="foto-livro">
           <img src="http://localhost:5000/img/theme/foto-livro.webp" alt="foto livro">
         </div>
-        <div class="d-flex flex-column justify-content-start">
+        <div class="d-flex flex-column justify-content-start" id="corpoDiv">
           <h5 class="text-start text-black-50"><%= value.livroTitulo %></h5>
           <p><%= value.livroDescricao %></p>
           <p><strong>Editora:</strong> <%= value.livroEditora %></p>
+          <div>
+            <button data-id="<%= value.livroId %>" title="Excluir" class="btn btn-danger btnExcluir"><i class="fas fa-trash"></i></button>
+            <a href="/livro/alterar/<%= value.livroId %>" title="Editar" class="btn btn-primary">
+                <i class="fas fa-pen"></i>
+            </a>
+        </div>
         </div>
         
         <!--<div class="foto-livro">
@@ -56,3 +62,5 @@
     </div>
   </div>
 </section>
+
+<script src="/js/livro/listar.js"></script>

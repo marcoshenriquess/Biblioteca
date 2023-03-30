@@ -18,6 +18,10 @@ class LivroRota{
         this.#router.get('/cadastro',ctrl.LivroCadastro);
         this.#router.post('/cadastro',ctrl.gravarLivro);
         this.#router.get('/lista',ctrl.LivroLista);
+        this.#router.get('/listar',ctrl.LivroListar);
+        //sthis.#router.post('/excluir', ctrl.deletarLivro);
+        this.#router.get('/alterar/:id', ctrl.alterarView);
+        this.#router.post('/alterar', ctrl.alterarLivro);
     }
 }
 module.exports = LivroRota;

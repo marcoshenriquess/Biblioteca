@@ -1,0 +1,62 @@
+<script src="/js/livro/alterar.js"></script>
+
+<link rel="stylesheet" href="/css/criar-livro.css">
+
+<div class="cx-form shadow-none p-3 mb-5 bg-light rounded">
+    <div class="cx-tilt-form">
+        <span>
+            <p>Cadastrar Livro</p>
+        </span>
+    </div>
+    <form class="cadastro-usu shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="row w-100">
+            <div class="col-12">
+                <input type="hidden" id="inputId" value="<%= titAlteracao.livroId %>">
+                <label for="titulo">Titulo:</label>
+                <input value="<%= titAlteracao.livroTitulo %>" class="form-control tam-inpt" type="text" id="titulo" name="titulo"
+                    placeholder="Informe o titulo">
+            </div>
+
+
+            <div class="col-12">    
+                <label for="editora">Editora:</label>
+                <input value="<%= titAlteracao.livroEditora %>" class="form-control tam-inpt" type="text" id="editora" name="editora">
+            </div>
+
+            <div class="col-12">
+                <label for="sinopse">Sinopse:</label>
+                <textarea class="form-control tam-inpt" type="text" id="sinopse" name="sinopse"> <%= titAlteracao.livroSinopse %> </textarea>
+            </div>
+
+            <div class="col-12">
+                <label for="descricao">Descrição:</label>
+                <textarea class="form-control tam-inpt" type="text" id="descricao" name="descricao"
+                    placeholder="Informe a descrição"> <%= titAlteracao.livroSinopse %> </textarea>
+            </div>
+
+            <!-- <div class="" style="width: 100%;">
+                <label for="gen-liv">Genero:</label>
+                <select class="gen-liv form-select">
+                    <option value="0">Banco de dados</option>
+                    <option value="1">Funcionario</option>
+                    <option value="2">Arquitetura e Redes de Computadores</option>
+                    <option value="3">Banco de Dados</option>
+                    <option value="4">Custos e Gestão Financeira</option>
+                    <option value="5">Empreendedorismo</option>
+                    <option value="6">Engenharia de Software</option>
+                    <option value="7">Estratégias em Tecnologia da Informação</option>
+                    <option value="8">Ferramentas de Desenvolvimento para Web</option>
+                    <option value="9">Gestão da Segurança de TI</option>
+                </select>
+            </div> -->
+            <div class="cx-inpt-form cx-bt" style="display: flex; justify-content: end; margin: 10px;">
+                <button type="button" class="btn btn-primary btn-cad" id="btnAlterarLivro">Salvar alterações</button>
+                <button type="submit" class="btn btn-primary btn-can">Cancelar</button>
+            </div>
+            <div class="alert alert-success" role="alert" id="sucesso" style="display:none;" > 
+            </div>
+            <div class="alert alert-danger" role="alert" id="erro" style="display:none">      
+            </div>
+        </div>
+    </form>
+</div>

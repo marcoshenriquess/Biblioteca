@@ -10,20 +10,20 @@ class LivroController{
     }
 
     async LivroCadastro(req,res){
-        let livroModel = new LivroModel();
-        let cadLivros = await livroModel.gravarLivro();
-        res.render('livro/cadastro', {lista: cadLivros});
+        //let livroModel = new LivroModel();
+        //let cadLivros = await livroModel.gravarLivro();
+        res.render('livro/cadastro', {});
     }
     
-    async LivroLista(req,res) {
-        let livro = new LivroModel();
-        let listaLivros = await livro.listarlivros();
-        res.render('livro/lista', {lista: listaLivros});
+    async LivroListar(req,res) {
+         let livro = new LivroModel();
+         let listaLivros = await livro.listarlivros();
+         res.render('livro/listar', {lista: listaLivros});
     }
 
-    async listarLivros(req, res){
+    async LivroLista(req, res){
         let livro = new LivroModel();
-        let listaLivros = await livro.listarLivros();
+        let listaLivros = await livro.listarlivros();
 
         let listaLiv = [];
 
@@ -36,18 +36,27 @@ class LivroController{
                 editora: listaLivros[i].livroEditora,
             })
         }
-
+        console.log(listaLiv)
         res.send({ lista: listaLiv, ok: true })
+    }
+     
+    async alterarView(req, res) {
+        let livroModel = new LivroModel();
+        if(req.params != null && req.params.id != null){
+            let livroId = req.params.id;           
+            livroModel = await livroModel.buscarLivro(livroId);
+        }
+        
+        let listaPerfil = await livroModel.listarlivros();
+        res.render('livro/alterar', { lista: listaPerfil, titAlteracao: livroModel });
     }
 
     async alterarLivro(req, res){
         let ok = false;
         if(req.body != null) {
-            if(req.body.id > 0 && req.body.titulo != null && req.body.descricao != null && req.body.sinopse != null && req.body.editora != null) {
-                if(req.body.livroId > 0) {
-                    let livro = new LivroModel(req.body.titulo, req.body.descricao, req.body.sinopse, req.body.editora);
-                    ok = livro.gravarLivro();
-                }
+            if(req.body.id > 0 && req.body.titulo != null && req.body.descricao != null && req.body.sinopse != null && req.body.editora != null){
+                let livro = new LivroModel(req.body.id, req.body.titulo, req.body.descricao, req.body.sinopse, req.body.editora);
+                ok = livro.gravarLivro();
             }
         }
 
