@@ -147,7 +147,16 @@ input:focus, select:focus{
     padding: 15px;
     box-shadow: 10px 10px 15px -3px rgba(0, 0, 0, 0.1);
 }
-
+.cx-scroll{
+    overflow-y: auto;
+    max-height: 500px;
+}
+.cx-cards-livros{
+    display: grid;
+    grid-row-gap: 10px;
+    grid-column-gap: 10px;
+    grid-template-columns: 200px 200px 200px !important;
+}
 .card-livro .btn {
     background-color: rgba(95, 56, 5);
     color: white;

@@ -1,4 +1,4 @@
-const UsuarioModel = require("../models/usuariosModel");
+const UsuarioModel = require("../models/usuarioModel");
 
 class UserController{
     constructor(){
