@@ -35,7 +35,7 @@ ENGINE = InnoDB;
 -- Table `editora`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `editora` (
-  `cod` INT NOT NULL,
+  `cod` INT NOT NULL AUTO_INCREMENT,
   `nome` VARCHAR(90) NOT NULL,
   `email` VARCHAR(90) NOT NULL,
   PRIMARY KEY (`cod`))
@@ -64,7 +64,7 @@ ENGINE = InnoDB;
 -- Table `Entrada`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Entrada` (
-  `cod` INT NOT NULL,
+  `cod` INT NOT NULL AUTO_INCREMENT,
   `dt_entra` DATETIME NOT NULL,
   `valor` DECIMAL(9,4) NOT NULL,
   PRIMARY KEY (`cod`))
@@ -75,7 +75,7 @@ ENGINE = InnoDB;
 -- Table `Motivos_Baixa`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Motivos_Baixa` (
-  `cod` INT NOT NULL,
+  `cod` INT NOT NULL AUTO_INCREMENT,
   `Motivo` LONGTEXT NOT NULL,
   PRIMARY KEY (`cod`))
 ENGINE = InnoDB;
@@ -85,7 +85,7 @@ ENGINE = InnoDB;
 -- Table `Baixas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Baixas` (
-  `cod` INT NOT NULL,
+  `cod` INT NOT NULL AUTO_INCREMENT,
   `dt_baixa` DATETIME NOT NULL,
   `Motivos_Baixa_cod` INT NOT NULL,
   PRIMARY KEY (`cod`, `Motivos_Baixa_cod`),
@@ -190,7 +190,7 @@ ENGINE = InnoDB;
 -- Table `Assunto`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `Assunto` (
-  `cod` INT NOT NULL,
+  `cod` INT NOT NULL AUTO_INCREMENT,
   `assunto` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`cod`))
 ENGINE = InnoDB;
@@ -240,7 +240,7 @@ ENGINE = InnoDB;
 -- Table `reservas`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `reservas` (
-  `cod` INT NOT NULL,
+  `cod` INT NOT NULL AUTO_INCREMENT,
   `dt_reserv` DATETIME NOT NULL,
   `Status` VARCHAR(20) NOT NULL,
   `dt_expir` DATETIME NOT NULL,
