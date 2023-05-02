@@ -32,23 +32,41 @@
 
     <div class="cx-cards-livros col-md-4 col-6">
       <% lista.forEach(function(value,index){ %>
-      <div class="d-flex flex-column align-items-center card-livro">
-        <div class="foto-livro">
-          <img src="http://localhost:5000/img/theme/foto-livro.webp" alt="foto livro">
-        </div>
-        <div class="d-flex flex-column justify-content-start" id="corpoDiv">
-          <h5 class="text-start text-black-50"><%= value.livroTitulo %></h5>
-          <p><%= value.livroDescricao %></p>
-          <p><strong>Editora:</strong> <%= value.livroEditora %></p>
-          <div>
-            <button data-id="<%= value.livroId %>" title="Excluir" class="btn btn-danger btnExcluir"><i class="fas fa-trash"></i></button>
-            <a href="/livro/alterar/<%= value.livroId %>" title="Editar" class="btn btn-primary">
-                <i class="fas fa-pen"></i>
-            </a>
-        </div>
-        </div>
-        
-        <!--<div class="foto-livro">
+        <div class="d-flex flex-column align-items-center card-livro">
+          <div class="foto-livro">
+            <img src="http://localhost:5000/img/theme/foto-livro.webp" alt="foto livro">
+          </div>
+          <div class="d-flex flex-column justify-content-start" id="corpoDiv">
+            <h5 class="text-start text-black-50">
+              <%= value.livroTitulo %>
+            </h5>
+            <p>
+              <%= value.livroDescricao %>
+            </p>
+            <p><strong>Editora:</strong>
+              <%= value.livroEditora %>
+            </p>
+            <div class="row w-100">
+              <div class="col-4">
+                <button data-id="<%= value.livroId %>" title="Excluir" class="btn w-100 btn-danger btnExcluir d-flex justify-content-center"><i
+                    class="fas fa-trash"></i></button>
+              </div>
+              <div class="col-4">
+                <a href="/livro/alterar/<%= value.livroId %>" title="Editar" class="btn w-100  d-flex justify-content-center">
+                  <i class="fas fa-pen"></i>
+                </a>
+              </div>
+              <div class="col-4">
+                <a href="/livro/empréstimo/<%= value.livroId %>" title="Empréstimo">
+                  <div class="icon-emprestimo btn w-100 btn-primary" >
+                    <i class="fa-solid fa-book"></i>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!--<div class="foto-livro">
           <img src="http://localhost:5000/img/theme/foto-livro.webp" alt="foto livro">
         </div>
         <div class="d-flex flex-column justify-content-start">
@@ -57,8 +75,8 @@
           <p><strong>Autor:</strong> William Shakespeare</p>
         </div>
         <button class="btn">Reservar</button>-->
-      </div>
-      <% }) %>
+        </div>
+        <% }) %>
     </div>
   </div>
 </section>

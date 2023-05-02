@@ -186,3 +186,6 @@ label {
     font-size: 18px !important;
     margin: 0 !important;
 }
+.icon-emprestimo svg{
+    width: 15px;
+}
