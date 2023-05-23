@@ -67,15 +67,17 @@ class UserController{
     }
 
     async UserAlterar(req,res){
-        let usuarioModel = new UsuarioModel();
-        if (req.params != null && req.params.id != null) {
-            let id_usuario = req.params.id;
-            usuarioModel = await UsuarioModel.buscarUsuario(id_usuario);
+        let ok = false;
+        if(req.body != null) {
+            if(req.body.id > 0 && req.body.nome != null && req.body.email != null && req.body.cpf != null && req.body.telefone != null && req.body.senha != null && req.body.perfilId != null) {
+                if(req.body.perfilId > 0) {
+                    let usuario = new UsuarioModel(req.body.id, req.body.nome, req.body.email, req.body.cpf, req.body.telefone, req.body.senha, req.body.perfilId);
+                    usuario.usuarioCod = req.body.id;
+                    ok = usuario.gravarUsuario();
+                }
+            }
         }
-        let usuModel = new TipoUsuModel();
-        let listaTipo = await usuModel.listar();
-        res.render('usuario/cadastro', { lista: listaTipo, AltUsu: usuModel });
-
+        res.send({ ok: ok})
     }
 }
 module.exports = UserController;
