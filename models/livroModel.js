@@ -6,8 +6,8 @@ class LivroModel {
 
     #livroId;
     #livroTitulo;
-    #livroDescricao;
-    #livroSinopse;
+    #livroEdicao;
+    #livroAno;
     #livroEditora;
 
     get livroId(){
@@ -26,22 +26,6 @@ class LivroModel {
         this.#livroTitulo = livroTitulo;
     }
 
-    get livroDescricao(){
-        return this.#livroDescricao;
-    }
-
-    set livroDescricao(livroDescricao) {
-        this.#livroDescricao = livroDescricao;
-    }    
-
-    get livroSinopse(){
-        return this.#livroSinopse;
-    }
-
-    set livroSinopse(livroSinopse) {
-        this.#livroSinopse = livroSinopse;
-    }    
-
     get livroEditora(){
         return this.#livroEditora;
     }
@@ -49,13 +33,31 @@ class LivroModel {
     set livroEditora(livroEditora) {
         this.#livroEditora = livroEditora;
     }
+
+    get livroEdicao(){
+        return this.#livroEdicao;
+    }
+
+    set livroEdicao(livroEdicao) {
+        this.#livroEdicao = livroEdicao;
+    }    
+
+    get livroAno(){
+        return this.#livroAno;
+    }
+
+    set livroAno(livroAno) {
+        this.#livroAno = livroAno;
+    }    
+
     
-    constructor(livroId, livroTitulo, livroDescricao, livroSinopse, livroEditora){
+    
+    constructor(livroId, livroTitulo, livroEdicao, livroAno, livroEditora){
         this.#livroId = livroId;
-        this.#livroDescricao = livroDescricao;
-        this.#livroSinopse = livroSinopse;
-        this.#livroEditora = livroEditora;
         this.#livroTitulo = livroTitulo;
+        this.#livroEdicao = livroEdicao;
+        this.#livroAno = livroAno;
+        this.#livroEditora = livroEditora;
     }
 
     async buscarLivro(id){
@@ -64,7 +66,7 @@ class LivroModel {
 
         let rows = await conexao.ExecutaComando(sql, valores);
         if(rows.length > 0){
-            return new LivroModel(rows[0]["tit_cod"],rows[0]["tit_titulo"],rows[0]["tit_descricao"],rows[0]["tit_sinopse"],rows[0]["tit_editora"]);
+            return new LivroModel(rows[0]["tit_cod"],rows[0]["tit_nome"],rows[0]["tit_edicao"],rows[0]["tit_ano"],rows[0]["editora_cod"]);
         }
         return null;
     }
@@ -76,7 +78,7 @@ class LivroModel {
 
         for(var i= 0; i < rows.length; i++){
             let row = rows[i];
-            listaRetorno.push(new LivroModel(row["tit_cod"], row["tit_titulo"], row["tit_descricao"],row["tit_sinopse"],row["tit_editora"]));
+            listaRetorno.push(new LivroModel(row["tit_cod"], row["tit_nome"], row["tit_edicao"],row["tit_ano"],row["editora_cod"]));
         }
 
         return listaRetorno;
@@ -85,14 +87,14 @@ class LivroModel {
     async gravarLivro() {
         let result = false;
         if(this.#livroId == 0){
-            let sql = "insert into titulo (tit_titulo, tit_descricao, tit_sinopse, tit_editora) values (?, ?, ?, ?)";
-            let valores = [this.#livroTitulo, this.#livroDescricao, this.#livroSinopse, this.#livroEditora];
+            let sql = "insert into titulo (tit_nome, tit_edicao, tit_ano, editora_cod) values (?, ?, ?, ?)";
+            let valores = [this.#livroTitulo, this.#livroEdicao, this.#livroAno, this.#livroEditora];
     
             result = await conexao.ExecutaComandoNonQuery(sql, valores);
         }
         else{
-            let sql = "update titulo set tit_titulo = ?, tit_descricao = ?, tit_sinopse = ?, tit_editora = ?";
-            let valores = [this.#livroTitulo, this.#livroDescricao, this.#livroSinopse, this.#livroEditora];
+            let sql = "update titulo set tit_nome = ?, tit_edicao = ?, tit_ano = ?, editora_cod = ?";
+            let valores = [this.#livroTitulo, this.#livroEdicao, this.#livroAno, this.#livroEditora];
 
             result = await conexao.ExecutaComandoNonQuery(sql, valores);
         }

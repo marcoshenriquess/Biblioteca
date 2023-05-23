@@ -11,9 +11,9 @@ class Database {
 
         this.#conexao = mysql.createPool({
             host: '140.238.185.50',
-            database: 'DB_10442211252',
-            user: '10442211252',
-            password: '10442211252',
+            database: 'DB_10442210470',
+            user: '10442210470',
+            password: '10442210470',
         });
         
     }

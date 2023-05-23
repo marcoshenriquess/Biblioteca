@@ -15,15 +15,11 @@ class UserRouter{
         this.#router = express.Router();
         let ctrl = new UserController();
         this.#router.get('/',ctrl.UserView);
-        
-        this.#router.post('/cadastro',ctrl.UserCadastro);
+        this.#router.get('/lista',ctrl.UserLista);
         this.#router.get('/cadastro',ctrl.UserCadastroView);
-
-        this.#router.post('/lista',ctrl.UserLista);
-        this.#router.get('/lista',ctrl.UserListaView);
-
+        this.#router.post('/cadastro',ctrl.UserCadastro);
         this.#router.post('/excluir',ctrl.deletarUsuario);
-
+        this.#router.get('/alterar/:id', ctrl.UserAlterar);
 
     }
 }

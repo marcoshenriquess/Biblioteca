@@ -1,3 +1,4 @@
+const TipoUsuModel = require("../models/tipoUsuarioModel");
 const UsuarioModel = require("../models/usuarioModel");
 
 class UserController{
@@ -7,7 +8,14 @@ class UserController{
     UserView(req,res) {
         res.render('usuario/home', { });
     }
-    async UserListaView(req,res) {
+    async UserListaView(req, res){
+        let usuario = new UsuarioModel();
+        let listaUsuarios = await usuario.listarUsuarios();
+
+
+        res.render('usuario/lista',{ lista: listaUsuarios})
+    }
+    async UserLista(req,res) {
         let usuario = new UsuarioModel();
         let listaUsuarios = await usuario.listarUsuarios();
         let listaUsu = [];
@@ -18,6 +26,7 @@ class UserController{
                 nome: listaUsuarios[i].usuarioNome,
                 email: listaUsuarios[i].usuarioEmail,
                 cpf: listaUsuarios[i].usuarioCpf,
+                tipoUsu: listaUsuarios[i].tipoNome
             })
         }
 
@@ -35,38 +44,38 @@ class UserController{
                 cod: listaUsuarios[i].usuarioCod,
                 nome: listaUsuarios[i].usuarioNome,
                 email: listaUsuarios[i].usuarioEmail,
-                cpf: listaUsuarios[i].usuarioCpf,
+                cpf: listaUsuarios[i].usuarioCpf
             })
         }
         res.render('usuario/lista', {  lista: listaUsu});
     }
-    UserCadastroView(req,res) {
-        res.render('usuario/cadastro', { });
+    async UserCadastroView(req,res) {
+        let usuModel = new TipoUsuModel();
+        let listaTipo = await usuModel.listar();
+        res.render('usuario/cadastro', { lista: listaTipo });
     }
 
     async UserCadastro(req,res) {
 
         let ok = false;
         if(req.body != null) {
-            if(req.body.inptNome != "" && req.body.inptEmail != "" && req.body.inptCpf != "" && req.body.inptDtNasc != "") {
- 
-                let tipoUser = false;
-                if(req.body.comboUser=='Usuario')
-                    tipoUser = false;
-                else
-                    tipoUser = true;
-                let usuario = new UsuarioModel(0,req.body.inptNome,req.body.inptEmail,req.body.inptCpf,40028922,tipoUser);
-                ok = await usuario.gravarUsuario();
-            }
+            let usuario = new UsuarioModel(0, req.body.nome, req.body.email,req.body.cpf, req.body.telefone, req.body.senha, req.body.perfilId);
+            ok = usuario.gravarUsuario();
         }
-            res.render('usuario/cadastro', {})
+
+        res.send({ ok: ok})
     }
-    async UserLista(req, res){
-        let usuario = new UsuarioModel();
-        let listaUsuarios = await usuario.listarUsuarios();
 
+    async UserAlterar(req,res){
+        let usuarioModel = new UsuarioModel();
+        if (req.params != null && req.params.id != null) {
+            let id_usuario = req.params.id;
+            usuarioModel = await UsuarioModel.buscarUsuario(id_usuario);
+        }
+        let usuModel = new TipoUsuModel();
+        let listaTipo = await usuModel.listar();
+        res.render('usuario/cadastro', { lista: listaTipo, AltUsu: usuModel });
 
-        res.render('usuario/lista',{ lista: listaUsuarios})
     }
 }
 module.exports = UserController;

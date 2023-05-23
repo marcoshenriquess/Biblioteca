@@ -1,11 +1,11 @@
 const express = require('express');
 const expressLayouts = require('express-ejs-layouts');
 const HomeRota = require('./routes/homeRouter');
-const LivroRota = require('./routes/livroRouter');
 const UserRouter = require('./routes/usuarioRouter');
-const ExemplarRouter = require('./routes/exemplarRouter');
+//const ExemplarRouter = require('./routes/exemplarRouter');
 const EmprRota = require('./routes/emprRouter');
 const ExemplarRota = require('./routes/exemplarRouter');
+const TituloRouter = require('./routes/tituloRouter');
 
 
 const app = express();
@@ -16,6 +16,8 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 app.set('views', './views');
 
+global.TITULO_IMG_CAMINHO = "/img/Titulos/";
+global.RAIZ_PROJETO = __dirname;
 
 app.set('layout', './layout');
 app.use(expressLayouts);
@@ -26,8 +28,8 @@ app.use('/',HomeR.router);
 let UserR = new UserRouter();
 app.use('/usuario',UserR.router);
 
-let LivroR = new LivroRota();
-app.use('/livro',LivroR.router);
+let TituloR = new TituloRouter();
+app.use('/titulo', TituloR.router);
 
 let ExemR = new EmprRota();
 app.use('/emprestimo',ExemR.router);

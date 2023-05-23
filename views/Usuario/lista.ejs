@@ -1,38 +1,39 @@
-<script src="/js/Usuarios/usuarios.js"></script>
-
-<form action="/usuario/excluir" method="POST" class="cadastro-usu shadow-lg p-3 mb-5 bg-white rounded" >
-  <h1 class="text-center text-black-50 pt-5">Lista Usuarios</h1>
-  <table class="table table-striped ">
-    <div class="row mx-5 mt-5">
-      <thead>
-        <tr>
-            <th>Id</th>
-            <th>Nome</th>
-            <th>Email</th>
-            <th>CPF</th>
-            <th>Ações</th>
-        </tr>
-    </thead>
-    <tbody id="corpoTabela">
-        <% const responses = lista %>
-        <% lista.forEach(function(value, index) { %>
-                <tr>
-                    <td><%= value.cod %></td>
-                    <td><%= value.nome %></td>
-                    <td><%= value.email %></td>
-                    <td><%= value.cpf %></td>
-                    <td>
-                      <div>
-                        <button data-id="<%= value.cod %>" title="Excluir" class="btn btn-danger btnExcluir"><i class="fas fa-trash"></i></button>
-                        <a href="/usuarios/alterar/<%= value.usuarioId %>" title="Editar" class="btn btn-primary">
-                            <i class="fas fa-pen"></i>
-                        </a>
-                      </div>
-                    </td>
-                </tr>   
-            <% }) %>        
-    </tbody>
-      <hr>
-    </div>
-  </table>
-</form>
+<link rel="stylesheet" href="/css/listar.css">
+<link rel="stylesheet" href="/css/main.css">
+<script src="/js/Usuarios/excluir.js"></script>
+<div class="cx-form p-3 mb-5 bg-light rounded">
+    <h1 class="text-center text-black-50 pt-5">Lista Usuarios</h1>
+    <table class="table table-striped ">
+      <div class="row mx-5 mt-5">
+        <thead>
+          <tr>
+              <th>Id</th>
+              <th>Nome</th>
+              <th>Email</th>
+              <th>Tipo</th>
+              <th>Ações</th>
+          </tr>
+      </thead>
+      <tbody id="corpoTabela">
+          <% const responses = lista %>
+          <% lista.forEach(function(value, index) { %>
+                  <tr>
+                      <td><%= value.cod %></td>
+                      <td><%= value.nome %></td>
+                      <td><%= value.email %></td> 
+                      <td><%= value.tipoUsu %></td>
+                      <td style="width: 100% !important; display: flex; justify-content: space-evenly; align-items: center;">
+                        <div>
+                          <button data-id="<%= value.cod %>" title="Excluir" class="btn btn-danger btnExcluir"><i class="fas fa-trash"></i></button>
+                          <a href="/usuario/alterar/<%= value.usuarioId %>" title="Editar" class="btn btn-primary btn-editar">
+                              <i class="fas fa-pen"></i>
+                          </a>
+                        </div>
+                      </td>
+                  </tr>   
+              <% }) %>        
+      </tbody>
+        <hr>
+      </div>
+    </table>
+</div>

@@ -3689,19 +3689,19 @@ fieldset:disabled .btn {
 
 .btn-primary {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #cb0c9f;
-  --bs-btn-border-color: #cb0c9f;
+  --bs-btn-bg: rgb(110, 68, 5);
+  --bs-btn-border-color: #5a4414;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #ad0a87;
-  --bs-btn-hover-border-color: #a20a7f;
+  --bs-btn-hover-bg: rgb(110, 68, 5);
+  --bs-btn-hover-border-color: rgb(110, 68, 5);
   --bs-btn-focus-shadow-rgb: 211, 48, 173;
   --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #a20a7f;
-  --bs-btn-active-border-color: #980977;
+  --bs-btn-active-bg: rgb(223, 187, 132);
+  --bs-btn-active-border-color: rgb(110, 68, 5);
   --bs-btn-active-shadow: none;
   --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #cb0c9f;
-  --bs-btn-disabled-border-color: #cb0c9f;
+  --bs-btn-disabled-bg: rgb(223, 187, 132);
+  --bs-btn-disabled-border-color: rgb(110, 68, 5);
 }
 
 .btn-secondary {
@@ -9358,8 +9358,8 @@ fieldset:disabled .btn {
 }
 
 .my-3 {
-  margin-top: 1rem !important;
-  margin-bottom: 1rem !important;
+  margin-top: 1rem ;
+  margin-bottom: 1rem ;
 }
 
 .my-4 {
@@ -9593,7 +9593,7 @@ fieldset:disabled .btn {
 }
 
 .ms-3 {
-  margin-left: 1rem !important;
+  margin-left: 1rem ;
 }
 
 .ms-4 {
@@ -10658,7 +10658,7 @@ fieldset:disabled .btn {
 }
 
 .bg-light {
-  background-color: aliceblue !important;
+ /* background-color: aliceblue !important;*/
 }
 
 .bg-dark {

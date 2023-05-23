@@ -6,10 +6,12 @@ class UsuarioModel {
 
     #usuarioCod;
     #usuarioNome;
-    #usuarioCpf;
     #usuarioEmail;
-    #usuarioTipoFuncionario;
-    #perfilId;
+    #usuarioCpf;
+    #usuarioTelefone;
+    #usuarioSenha;
+    #tipoCod;
+    #tipoNome;
 
     get usuarioCod() { 
         return this.#usuarioCod;
@@ -27,14 +29,6 @@ class UsuarioModel {
         this.#usuarioNome = usuarioNome;
     }
 
-    get usuarioCpf() {
-        return this.#usuarioCpf;
-    }
-
-    set usuarioCpf(usuarioCpf){
-        this.#usuarioCpf = usuarioCpf;
-    }
-
     get usuarioEmail() {
         return this.#usuarioEmail;
     }
@@ -43,28 +37,53 @@ class UsuarioModel {
         this.#usuarioEmail = usuarioEmail;
     }
 
-    get usuarioTipoFuncionario(){
-        return this.#usuarioTipoFuncionario;
+    get usuarioCpf() {
+        return this.#usuarioCpf;
     }
 
-    set usuarioTipoFuncionario(usuarioTipoFuncionario) {
-        this.#usuarioTipoFuncionario = usuarioTipoFuncionario;
+    set usuarioCpf(usuarioCpf){
+        this.#usuarioCpf = usuarioCpf;
     }
 
-    get perfilId() {
-        return this.#perfilId;
+    get usuarioTelefone() {
+        return this.#usuarioTelefone;
     }
 
-    set perfilId(perfilId) {
-        this.#perfilId = perfilId;
+    set usuarioTelefone(usuarioTelefone){
+        this.#usuarioTelefone = usuarioTelefone;
     }
 
-    constructor(usuarioCod, usuarioNome, usuarioCpf, usuarioEmail, usuarioTipoFuncionario, perfilId) {
+    get usuarioSenha(){
+        return this.#usuarioSenha;
+    }
+    set usuarioSenha(usuarioSenha){
+        this.#usuarioSenha = usuarioSenha;
+    }
+
+    get tipoCod() {
+        return this.#tipoCod;
+    }
+
+    set tipoCod(tipoCod) {
+        this.#tipoCod = tipoCod;
+    }
+    get tipoNome() {
+        return this.#tipoNome;
+    }
+
+    set tipoNome(tipoNome) {
+        this.#tipoNome = tipoNome;
+    }
+
+    constructor(usuarioCod, usuarioNome, usuarioEmail, usuarioCpf, usuarioTelefone, usuarioSenha, tipoCod, tipoNome) {
         this.#usuarioCod = usuarioCod;
         this.#usuarioNome = usuarioNome;
-        this.#usuarioCpf = usuarioCpf;
         this.#usuarioEmail = usuarioEmail;
-        this.#usuarioTipoFuncionario = usuarioTipoFuncionario;
+        this.#usuarioCpf = usuarioCpf;
+        this.#usuarioTelefone = usuarioTelefone;
+        this.#usuarioSenha = usuarioSenha;
+        this.#tipoCod = tipoCod;
+        this.#tipoNome = tipoNome;
     }
 
     async buscarUsuario(id){
@@ -73,13 +92,13 @@ class UsuarioModel {
 
         let rows = await conexao.ExecutaComando(sql, valores);
         if(rows.length > 0){
-            return new UsuarioModel(rows[0]["usu_cod"], rows[0]["nome"], rows[0]["email"], rows[0]["cpf"]);
+            return new UsuarioModel(rows[0]["usu_cod"], rows[0]["usu_nome"], rows[0]["usu_email"], rows[0]["usu_cpf"], rows[0]["tipousuario_tipo_cod"]);
         }
         return null;
     }
 
     async listarUsuarios() {
-        let sql = 'select * from usuario';
+        let sql = 'select * from usuario u inner join tipousuario p on u.tipousuario_tipo_cod = p.tipo_cod';
         let rows = await conexao.ExecutaComando(sql);
 
         let listaUsuarios = [];
@@ -87,7 +106,9 @@ class UsuarioModel {
         for(let i = 0; i<rows.length; i++){
             let row = rows[i];
             listaUsuarios.push(
-                new UsuarioModel(rows[i]["usu_cod"], rows[i]["nome"], rows[i]["email"], rows[i]["cpf"])
+                new UsuarioModel(row["usu_cod"], 
+                row["usu_nome"],row["usu_email"],
+                row["usu_cpf"], row["usu_telefone"], row["usu_senha"], row["tipo_cod"], row["tipo_nome"])
             );
         }
 
@@ -97,12 +118,12 @@ class UsuarioModel {
     async gravarUsuario() {
         let result = false;
         if(this.#usuarioCod == 0){
-            let sql = "insert into usuario (nome, cpf, email, telefone, funcionario) values (?, ?, ?, ?, ?)";
-            let valores = [this.#usuarioNome, this.#usuarioEmail, this.#usuarioCpf, this.#usuarioTipoFuncionario, this.#perfilId];
+            let sql = "insert into usuario (usu_nome,usu_cpf,usu_email,usu_telefone,usu_senha,tipousuario_tipo_cod) values (?, ?, ?, ?, ?, ?)";
+            let valores = [this.#usuarioNome, this.#usuarioCpf,  this.#usuarioEmail, this.#usuarioTelefone, this.#usuarioSenha, this.#tipoCod];
     
             result = await conexao.ExecutaComandoNonQuery(sql, valores);
         }
-
+    
         return result;
 
     }

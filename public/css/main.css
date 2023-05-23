@@ -1,10 +1,12 @@
 body {
     background-image: url(/img/theme/library.webp);
+    padding: 20px;
 }
 
 main {
     display: flex !important;
-    height: 100vh !important;
+    height: auto !important;
+    min-height: 100vh;
 }
 
 aside {
@@ -15,33 +17,21 @@ aside {
     background-size: cover;
     backdrop-filter: blur(10px);
     position: relative !important;
+    margin: 0px !important;
 }
 
 .cx-article {
-    flex: 2 !important;
+    flex: 1 !important;
     display: flex !important;
     justify-content: center !important;
     align-items: center !important;
+    background-color: transparent !important;
 }
-
-.cx-conteudo-article {
-
-    background-color: aliceblue !important;
-    width: 80%;
-    height: 95%;
-    border-radius: 0px 10px 10px 0px;
-    backdrop-filter: blur(10px);
+.cx-conteudo{
+    width: 90%;
+    height: 100%;
+    border-radius: 15px;
 }
-
-.cx-img-article{
-    width: 15%;
-    height: 95%;
-    background-image: url(/img/vetor/espiral.png);
-    background-repeat: no-repeat;
-    background-position: right;
-    background-size: contain;
-}
-
 .logo-livro {
     width: 100% !important;
     display: flex;
@@ -87,15 +77,19 @@ aside {
 }
 /*----- FORMULARIO CADASTRO -----*/
 .cx-form {
-    background-color: aliceblue !important;
+    background-color: white;
     width: 100%;
     height: 100%;
     display: flex;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
     flex-direction: column;
 }
-
+.cx-list-livros{
+    display: flex !important;
+    justify-content: flex-start;
+    align-items: center !important;
+}
 .cadastro-usu {
     /*form*/
     background-color: rgb(233, 233, 233);
@@ -176,9 +170,7 @@ input:focus, select:focus{
 
 /* Lista Usuario CSS */
 .table thead{
-    background-image: url(/img/vetor/bc-couro.jpg) !important;
-    background-repeat: repeat;
-    background-size: contain !important;
+    background-color: rgb(80, 50, 11);
     color: white;
 }
 
