@@ -7,6 +7,10 @@
         </span>
     </div>
     <form class="cadastro-usu shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="alert alert-success" role="alert" id="sucesso" style="display:none; width: 100%;">
+        </div>
+        <div class="alert alert-danger" role="alert" id="erro" style="display:none; width: 100%;">
+        </div>
         <input type="hidden" id="titCod" value="<%= titAlt.tituloCod %>">
         <div class="row w-100">
             <div class="col-12">
@@ -57,10 +61,7 @@
                 <button type="button" class="btn btn-primary btn-cad" id="btnAlterarTitulo">Salvar Alterações</button>
                 <a class="btn btn-secondary btn-cad" href="/titulo/listar">Cancelar</a>
             </div>
-            <div class="alert alert-success" role="alert" id="sucesso" style="display:none;">
-            </div>
-            <div class="alert alert-danger" role="alert" id="erro" style="display:none">
-            </div>
+            
         </div>
     </form>
 </div>
