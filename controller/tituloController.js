@@ -13,7 +13,26 @@ class TituloController {
         let listaTitulos = await tituloModel.listarTitulos();
         res.render('titulo/listar', { lista: listaTitulos });
     }
+    async buscarTitulo(req, res) {
+        var ok = true;
+        var msg = ""
+        var retorno = null;
+        if(req.body.id != null && req.body.id != ""){
+            let tituloModel = new TituloModel();
+            tituloModel = await tituloModel.buscarTitulo(req.body.id);
 
+            retorno = {
+                nome: tituloModel.tituloNome,
+                id: tituloModel.tituloCod,
+            };
+        }
+        else {
+            ok = false;
+            msg = "Parâmetro inválido!";
+        }
+
+        res.send({ ok: ok, msg: msg, retorno: retorno })
+    }
     //ok
     async listarEditoras(req, res) {
         let editoraModel = new EditoraModel();
