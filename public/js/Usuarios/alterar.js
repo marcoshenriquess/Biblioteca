@@ -7,9 +7,10 @@ document.addEventListener("DOMContentLoaded", function () {
     })
 })
 
-function gravarUsuario() {
+function alterarUsu() {
     limparErros();
 
+    var inptId = document.getElementById("inptId");
     var inptNome = document.getElementById("inptNome");
     var inptEmail = document.getElementById("inptEmail");
     var inptCpf = document.getElementById("inptCpf");
@@ -40,6 +41,7 @@ function gravarUsuario() {
 
     if(listaErros.length == 0){
         var data = {
+            cod: inptId.value,
             nome: inptNome.value,
             email: inptEmail.value,
             cpf: inptCpf.value,
@@ -60,18 +62,12 @@ function gravarUsuario() {
         })
         .then(r => {
             if(r.ok){
-                inptNome.value = "";
-                inptEmail.value = "";
-                inptCpf.value = "";
-                inptTelefone.value = "";
-                inptSenha.value = "";
-                selPerfil.value = 0;
 
-                document.getElementById("sucesso").innerText = "Título gravado com sucesso!";
+                document.getElementById("sucesso").innerText = "Usuario gravado com sucesso!";
                 document.getElementById("sucesso").style = "display:block";
             }
             else {
-                document.getElementById("erro").innerText = "Erro ao gravar título!";
+                document.getElementById("erro").innerText = "Erro ao gravar Usuario!";
                 document.getElementById("erro").style = "display:block";
 
             }

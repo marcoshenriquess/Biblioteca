@@ -20163,9 +20163,6 @@ fieldset:disabled .btn {
   background-image: linear-gradient(310deg, #627594 0%, #8ca1cb 100%);
 }
 
-.alert-success {
-  background-image: linear-gradient(310deg, #17ad37 0%, #84dc14 100%);
-}
 
 .alert-info {
   background-image: linear-gradient(310deg, #2152ff 0%, #02c6f3 100%);
@@ -20173,10 +20170,6 @@ fieldset:disabled .btn {
 
 .alert-warning {
   background-image: linear-gradient(310deg, #f53939 0%, #fac60b 100%);
-}
-
-.alert-danger {
-  background-image: linear-gradient(310deg, #ea0606 0%, #ff3d59 100%);
 }
 
 .alert-light {

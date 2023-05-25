@@ -66,13 +66,24 @@ class UserController{
         res.send({ ok: ok})
     }
 
+    async UserAlterarView(req, res) {
+        let usuarioModel = new UsuarioModel();
+        if(req.params != null && req.params.id != null){
+            let usuarioCod = req.params.id;           
+            usuarioModel = await usuarioModel.buscarUsuario(usuarioCod);
+        }
+        let tipoUsu = new TipoUsuModel();
+        let listaPerfil = await tipoUsu.listar();
+        res.render('usuario/alterar', { lista: listaPerfil, AltUsu: usuarioModel });
+    }
+
     async UserAlterar(req,res){
         let ok = false;
         if(req.body != null) {
-            if(req.body.id > 0 && req.body.nome != null && req.body.email != null && req.body.cpf != null && req.body.telefone != null && req.body.senha != null && req.body.perfilId != null) {
+            if(req.body.cod > 0 && req.body.nome != null && req.body.email != null && req.body.cpf != null && req.body.telefone != null && req.body.senha != null && req.body.perfilId != null) {
                 if(req.body.perfilId > 0) {
-                    let usuario = new UsuarioModel(req.body.id, req.body.nome, req.body.email, req.body.cpf, req.body.telefone, req.body.senha, req.body.perfilId);
-                    usuario.usuarioCod = req.body.id;
+                    let usuario = new UsuarioModel(req.body.cod, req.body.nome, req.body.email, req.body.cpf, req.body.telefone, req.body.senha, req.body.perfilId);
+                    usuario.usuarioCod = req.body.cod;
                     ok = usuario.gravarUsuario();
                 }
             }

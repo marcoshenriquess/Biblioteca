@@ -17,9 +17,10 @@ class UserRouter{
         this.#router.get('/',ctrl.UserView);
         this.#router.get('/lista',ctrl.UserLista);
         this.#router.get('/cadastro',ctrl.UserCadastroView);
+        this.#router.get('/alterar/:id', ctrl.UserAlterarView);
         this.#router.post('/cadastro',ctrl.UserCadastro);
         this.#router.post('/excluir',ctrl.deletarUsuario);
-        this.#router.get('/alterar/:id', ctrl.UserAlterar);
+        this.#router.post('/alterar', ctrl.UserAlterar);
 
     }
 }

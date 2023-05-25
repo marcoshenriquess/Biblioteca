@@ -60,9 +60,6 @@ function gravarUsuario() {
         })
         .then(r => {
             console.log(r);
-            console.log(inptCpf.value);
-            console.log(inptNome.value);
-            console.log(inptEmail.value);
             if(r.ok){
                 inptNome.value = "";
                 inptEmail.value = "";
@@ -71,11 +68,11 @@ function gravarUsuario() {
                 inptSenha.value = "";
                 selPerfil.value = 0;
 
-                document.getElementById("sucesso").innerText = "Título gravado com sucesso!";
+                document.getElementById("sucesso").innerText = "Usuario gravado com sucesso!";
                 document.getElementById("sucesso").style = "display:block";
             }
             else {
-                document.getElementById("erro").innerText = "Erro ao gravar título!";
+                document.getElementById("erro").innerText = "Erro ao gravar Usuario!";
                 document.getElementById("erro").style = "display:block";
 
             }
