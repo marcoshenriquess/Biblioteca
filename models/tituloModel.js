@@ -87,12 +87,38 @@ class TituloModel {
         this.#editoraNome = editoraNome;
     }
 
+
+    async listaAcervo() {
+        let sql = 'select * from titulo t inner join editora ed on t.editora_cod = ed.ed_cod';
+        var rows = await conexao.ExecutaComando(sql);
+        let listaRetorno = [];
+        if (rows.length > 0) {
+            for (let i = 0; i < rows.length; i++) {
+                var row = rows[i];
+                let titImagem = row["tit_imagem"];
+                if (titImagem != null && titImagem != "") {
+                    //checar se existe
+                    
+                    if (fs.existsSync(global.RAIZ_PROJETO + "/public" + global.TITULO_IMG_CAMINHO + titImagem) == false) {
+                        titImagem = "sem-imagem.png";
+                    }
+                }
+                else {
+                    titImagem = "sem-imagem.png"
+                }
+                listaRetorno.push(new TituloModel(row['tit_cod'],
+                    row['tit_nome'], row['tit_edicao'], row['tit_ano'],
+                    row['editora_cod'], titImagem, row['ed_nome']));
+            }
+        }
+        return listaRetorno;
+    }
+
     async buscarTitulo(tituloCod) {
         let sql = 'select * from titulo t inner join editora ed on t.editora_cod = ed.ed_cod where tit_cod = ?';
         let valores = [tituloCod];
         let rows = await conexao.ExecutaComando(sql, valores);
         var titulo = [];
-        console.log("titulocod dentro do buscarTitulo da model: ", tituloCod, rows.length)
 
         if (rows.length > 0) {
             for (let i = 0; i < rows.length; i++) {
@@ -114,7 +140,6 @@ class TituloModel {
                 titulo = new TituloModel(row["tit_cod"], row["tit_nome"], row["tit_edicao"], row["tit_ano"], row["editora_cod"], row["tit_imagem"], row["ed_nome"]);
             }
         }
-        console.log("esse é o titulo: ", titulo.tituloCod);
         return titulo;
     }
 
@@ -156,9 +181,7 @@ class TituloModel {
     async deletarTitulo(tituloCod) {
         let sql = "delete from titulo where tit_cod = ?"
         let valores = [tituloCod];
-        console.log(tituloCod)
         let result = conexao.ExecutaComandoNonQuery(sql, valores);
-        console.log("passei por aqui");
         return result;
     }
 

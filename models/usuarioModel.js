@@ -143,6 +143,18 @@ class UsuarioModel {
         return result;
     }
 
+    async autenticarUsuario(email, senha){
+        let sql = "select * from usuario where usu_email = ? and usu_senha = ?"
+        let valores = [email, senha];
+        let rows = await conexao.ExecutaComando(sql, valores);
+        if(rows.length > 0){
+            return new UsuarioModel(rows[0]["usu_cod"], 
+            rows[0]["usu_nome"],rows[0]["usu_email"],
+            rows[0]["usu_cpf"], rows[0]["usu_telefone"], rows[0]["usu_senha"], rows[0]["tipousuario_tipo_cod"]);
+        }
+        
+        return null;
+    }
 }
 
 module.exports = UsuarioModel;

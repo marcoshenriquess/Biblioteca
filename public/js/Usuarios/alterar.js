@@ -63,11 +63,11 @@ function alterarUsu() {
         .then(r => {
             if(r.ok){
 
-                document.getElementById("sucesso").innerText = "Usuario gravado com sucesso!";
+                document.getElementById("sucesso").innerText = "Usuario alterado com sucesso!";
                 document.getElementById("sucesso").style = "display:block";
             }
             else {
-                document.getElementById("erro").innerText = "Erro ao gravar Usuario!";
+                document.getElementById("erro").innerText = "Erro ao alterar Usuario!";
                 document.getElementById("erro").style = "display:block";
 
             }

@@ -1,5 +1,6 @@
 const express = require('express');
 const UserController = require('../controller/usuarioController');
+const Autenticacao = require('../middlewares/autenticacao');
 
 class UserRouter{
     #router;
@@ -14,6 +15,7 @@ class UserRouter{
     constructor(){
         this.#router = express.Router();
         let ctrl = new UserController();
+        let auth = new Autenticacao();
         this.#router.get('/',ctrl.UserView);
         this.#router.get('/lista',ctrl.UserLista);
         this.#router.get('/cadastro',ctrl.UserCadastroView);
