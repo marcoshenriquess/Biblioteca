@@ -1,3 +1,4 @@
+const { query } = require('express');
 var mysql = require('mysql2');
 
 class Database {
@@ -22,6 +23,7 @@ class Database {
         var cnn = this.#conexao;
         return new Promise(function(res, rej) {
             cnn.query(sql, valores, function (error, results, fields) {
+                
                 if (error) 
                     rej(error);
                 else 

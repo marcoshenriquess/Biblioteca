@@ -29,7 +29,46 @@
                             <span id="contadorCarrinho" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>-->
                         <div style="margin-left: 10px;">
-                            <a class="btn btn-outline-dark" href="/admin"> <i class="bi bi-person-fill"></i> Login</a>
+                            <a class="btn btn-outline-dark" href="/login"> <i class="bi bi-person-fill"></i> Login</a>
+                        </div>
+                        <button data-bs-toggle="modal" data-bs-target="#carrinhoModal" class="btn btn-primary btn-editar">
+                            <i class="bi-cart-fill me-1"></i>
+                            Carrinho <i class="fas fa-shopping-cart"></i>
+                            <span id="contadorCarrinho" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                        </button>
+                        <div class="modal fade" id="carrinhoModal" tabindex="-1" aria-labelledby="carrinhoModalLabel" aria-hidden="true">
+                            <div class="modal-dialog modal-lg">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="carrinhoModalLabel"><i class="bi-cart-fill me-1"></i> Carrinho de compras</h5>
+                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                    </div>
+                                    <div class="modal-body" id="corpoModal">
+                                        <div class="table-responsive">
+                                            <table style="width:100%">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Descrição</th>
+                                                        <th>Quantidade</th>
+                                                        <th>Ações</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody id="corpoTabelaCarrinho">
+                
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer" style="display:block;">
+                                        <div id="valorTotalCarrinho" style="text-align:end;">
+                                            
+                                        </div>
+                                        <hr>
+                                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                                        <button type="button" id="btnGravarPedido" class="btn btn-primary">Confirmar</button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -65,6 +104,10 @@
                                         <div class="d-flex justify-content-center small mb-2">
                                             <%= value.tituloAno %>
                                         </div>
+                                        <a  data-id="<%= value.tituloCod %>" title="Adicionar"
+                                            class="btn btn-primary btnAddCarrinho">
+                                            <i class="fas fa-plus"></i>
+                                        </a>
                                     </div>
                                 </div>                                
                             </div>
@@ -117,7 +160,7 @@
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
-        <script src="/js/Acervo/js/scripts.js"></script>
-        <script src="/js/Acervo/js/carrinho.js"></script>
+         <!--<script src="/js/Acervo/scripts.js"></script>-->
+       <script src="/js/Acervo/carrinho.js"></script>
     </body>
 </html>

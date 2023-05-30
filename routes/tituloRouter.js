@@ -38,7 +38,6 @@ class TituloRouter {
         this.#router.post('/excluir', auth.usuarioIsAdmin, ctrl.deletarTitulo);
         this.#router.get('/alterar/:id', auth.usuarioIsAdmin, ctrl.alterarView);
         this.#router.post('/alterar', auth.usuarioIsAdmin, upload.single("inputImagem"), ctrl.alterarTitulo);
-        this.#router.post("/buscar", auth.usuarioIsAdmin, ctrl.buscarTitulo);
 
     }
 

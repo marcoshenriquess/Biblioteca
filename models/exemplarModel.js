@@ -104,7 +104,6 @@ class ExemplarModel  {
     async gravarExemplar() {
         let result = false;
         if(this.#exemplarCod == 0){
-            //Função de cadastro
             let sql = "insert into exemplares (tit_titulo, tit_descricao, tit_sinopse, tit_editora) values (?, ?, ?, ?)";
             let valores = [this.#exemplarNumero, this.#exemplarStatus, this.#exemplarEdicao, this.#exemplarAno];
     
@@ -119,7 +118,9 @@ class ExemplarModel  {
         }
         return result;
     }
+    async gravarPedido() {
 
+    }
     async deletarLivro(exemplarCod) {
         let sql = "delete from titulo where tit_cod = ?"
         let valores = [exemplarCod];
@@ -130,4 +131,4 @@ class ExemplarModel  {
     }
 
 }
-module.exports = LivroModel;
+module.exports = ExemplarModel;

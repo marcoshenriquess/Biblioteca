@@ -19,6 +19,10 @@ class AcervoRoute {
         let ctrl = new AcervoController();
 
         this.#router.get('/', ctrl.listarLivrosView);
+        this.#router.post("/buscar", ctrl.buscarTitulo);
+        this.#router.post("/gravar-pedido", ctrl.gravarPedido);
+
+
     }
 }
 

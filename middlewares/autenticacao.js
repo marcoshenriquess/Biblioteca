@@ -21,7 +21,7 @@ class Autenticacao {
             var usuId = req.cookies.usuarioLogado;
             let usuario = await new UsuarioModel().buscarUsuario(usuId);
             res.locals.usuarioLogado = usuario;
-            if(usuario != null && usuario.perfilId == 1) {         
+            if(usuario != null ) {         
                 next();
             }
             else{

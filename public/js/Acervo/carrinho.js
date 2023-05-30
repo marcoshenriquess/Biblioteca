@@ -172,7 +172,7 @@ function adicionarAoCarrinho() {
 
     if(tituloId != null && tituloId != ""){
 
-        fetch('/titulo/buscar', {
+        fetch('/buscar', {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
