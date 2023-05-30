@@ -32,12 +32,13 @@ class AcervoController {
     }   
     async gravarPedido(req, res){
         var ok = true;
-        var msg = '';
-        var retorno = null
-        if(req.body.id != null && req.body.id != "" && req.body.quantidade > 0){
-            let exemplarModel = new ExemplarModel();
-            exemplarModel = await exemplarModel.
+        var carrinho = req.body;
+    
+        if(carrinho != undefined ){
+            let exemplarModel = new ExemplarModel(req.body.id);
+            ok = await exemplarModel.gravarPedido(carrinho)
 
+        }
     } 
 }
 
