@@ -71,7 +71,7 @@ function alterarTitulo() {
             formData.append("editora", selEditora.value);
             formData.append("inputImagem", inputImg);
 
-            fetch('/titulo/alterar', {
+            fetch('/admin/titulo/alterar', {
                 method: "POST",
                 body: formData
             })

@@ -17,7 +17,7 @@ function excluirTitulo() {
         var data = {
             tituloCod: tituloCod
         }
-        fetch("/titulo/excluir", {
+        fetch("/admin/titulo/excluir", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"

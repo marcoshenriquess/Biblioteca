@@ -72,7 +72,7 @@ function gravarTitulo() {
             formData.append("editora", selEditora.value);
             formData.append("inputImagem", inputImg);
 
-            fetch('/titulo/criar', {
+            fetch('/admin/titulo/criar', {
                 method: "POST",
                 body: formData
             })
@@ -98,13 +98,13 @@ function gravarTitulo() {
                     }
                 })
                 .catch(e => {
-                    console.log("Ocorreu um erro : ", e);
+                    
                 })
         } else
-            alert("Formato de arquivo inválido!")
+            alert("Formato de arquivo inválido!");
     }
     else {
-        mostrarErros(liErros)
+        mostrarErros(liErros);
     }
 }
 

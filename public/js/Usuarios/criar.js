@@ -48,7 +48,7 @@ function gravarUsuario() {
             perfilId: selPerfil.value
         };
 
-        fetch('/usuario/cadastro', {
+        fetch('/admin/usuario/cadastro', {
             method: "POST",
             headers: {
                 "Content-type": "application/json"

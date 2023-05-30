@@ -17,7 +17,7 @@ function excluirUsuario() {
         var data = {
             usuarioId: id
         }
-        fetch("/usuario/excluir", {
+        fetch("/admin/usuario/excluir", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json"
