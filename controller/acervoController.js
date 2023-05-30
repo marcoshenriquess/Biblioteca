@@ -36,9 +36,10 @@ class AcervoController {
         var retorno = null
         if(req.body.id != null && req.body.id != "" && req.body.quantidade > 0){
             let exemplarModel = new ExemplarModel();
-            exemplarModel = await exemplarModel.
+            //exemplarModel = await exemplarModel.
 
-    } 
+        } 
+    }
 }
 
 module.exports = AcervoController;

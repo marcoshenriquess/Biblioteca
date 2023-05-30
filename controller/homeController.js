@@ -4,7 +4,7 @@ class HomeController{
     }
 
     homeView(req, res){
-        res.render('home/home', { layout: "acervo/acervo"});
+        res.render('home/home', { });
     }
 }
 

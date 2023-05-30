@@ -50,7 +50,7 @@ function alterarUsu() {
             perfilId: selPerfil.value
         };
 
-        fetch('/usuario/alterar', {
+        fetch('/admin/usuario/alterar', {
             method: "POST",
             headers: {
                 "Content-type": "application/json"
