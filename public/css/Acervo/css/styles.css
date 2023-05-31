@@ -10827,6 +10827,7 @@ textarea.form-control-lg {
 
 
 .navbar{
+  background-color: rgba(95, 56, 5) !important;
   position: fixed;
   width: 100%;
   z-index: 1000;
@@ -10836,10 +10837,13 @@ textarea.form-control-lg {
   height: 500px;
   text-align: center;
   background-size: cover;
-  background-attachment: scroll;
+  background-attachment: fixed;
 }
 .cx-titulo{
-  border: 2px solid red;
   height: 100%;
-  padding-bottom: 0px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.texto-tit{
 }
