@@ -15,27 +15,34 @@
     </head>
     <body>
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light nav-edit">
+       
+        <!-- Header-->
+        <header class="banner"> <nav class="navbar navbar-expand-lg navbar-light bg-light nav-edit">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!">Visite nosso acervo e escolha o seu livro!</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     </ul>
-                    <div class="d-flex">
+                    <div class="d-flex cx-teste">
                         <!--<button data-bs-toggle="modal" data-bs-target="#carrinhoModal" class="btn btn-outline-dark">
                             <i class="bi-cart-fill me-1"></i>
                             Carrinho
                             <span id="contadorCarrinho" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>-->
-                        <div style="margin-left: 10px;">
-                            <a class="btn btn-outline-dark" href="/login"> <i class="bi bi-person-fill"></i> Login</a>
-                        </div>
-                        <button data-bs-toggle="modal" data-bs-target="#carrinhoModal" class="btn btn-primary btn-editar">
-                            <i class="bi-cart-fill me-1"></i>
-                            Carrinho <i class="fas fa-shopping-cart"></i>
-                            <span id="contadorCarrinho" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
+                        <section class="section-buttons-nav1">
+                            <button data-bs-toggle="modal" data-bs-target="#carrinhoModal" class="btn btn-primary position-relative btn-editar">
+                                <i class="bi-cart-fill"></i>
+                                <span id="contadorCarrinho" class="badge bg-red text-white position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">0<span class="visually-hidden">unread messages</span></span>
+                            </button>
+                        </section>
+
+                        <section class="section-buttons-nav2">
+                            <div style="margin-left: 10px;" class="btn-log">
+                                <a class="btn btn-dark" href="/login"> <i class="bi bi-person-fill"></i> Login</a>
+                            </div>
+                        </section>
+
+                        
                         <div class="modal fade" id="carrinhoModal" tabindex="-1" aria-labelledby="carrinhoModalLabel" aria-hidden="true">
                             <div class="modal-dialog modal-lg">
                                 <div class="modal-content">
@@ -79,8 +86,6 @@
                 </div>
             </div>
         </nav>
-        <!-- Header-->
-        <header class="banner">
             <div class="container cx-titulo px-4 px-lg-5">
                 <div class="text-center text-white texto-tit">
                     <h1 class="display-4 fw-bolder">BIBLIOTECA DO CENTRO UNIVERSITÁRIO</h1>
@@ -111,6 +116,7 @@
                                         </div>
                                         <a  data-id="<%= value.tituloCod %>" title="Adicionar"
                                             class="btn btn-primary btnAddCarrinho">
+                                            Adicionar ao Carrinho
                                             <i class="fas fa-plus"></i>
                                         </a>
                                     </div>
@@ -159,7 +165,7 @@
             </div>-->
         </section>
         <!-- Footer-->
-        <footer class="py-5 bg-dark">
+        <footer class="py-5 bg-dark footer">
             <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Biblioteca 2023</p></div>
         </footer>
         <!-- Bootstrap core JS-->

@@ -2845,19 +2845,19 @@ textarea.form-control-lg {
 
 .btn-primary {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #0d6efd;
-  --bs-btn-border-color: #0d6efd;
+  --bs-btn-bg: #664d03;
+  --bs-btn-border-color: #664d03;
   --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #0b5ed7;
-  --bs-btn-hover-border-color: #0a58ca;
+  --bs-btn-hover-bg: #cbba89;
+  --bs-btn-hover-border-color: #cbba89;
   --bs-btn-focus-shadow-rgb: 49, 132, 253;
   --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #0a58ca;
-  --bs-btn-active-border-color: #0a53be;
+  --bs-btn-active-bg: #664d03;
+  --bs-btn-active-border-color: #664d03;
   --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
   --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #0d6efd;
-  --bs-btn-disabled-border-color: #0d6efd;
+  --bs-btn-disabled-bg: #664d03;
+  --bs-btn-disabled-border-color: #664d03;
 }
 
 .btn-secondary {
@@ -2964,19 +2964,19 @@ textarea.form-control-lg {
 
 .btn-dark {
   --bs-btn-color: #fff;
-  --bs-btn-bg: #212529;
-  --bs-btn-border-color: #212529;
-  --bs-btn-hover-color: #fff;
-  --bs-btn-hover-bg: #424649;
-  --bs-btn-hover-border-color: #373b3e;
-  --bs-btn-focus-shadow-rgb: 66, 70, 73;
-  --bs-btn-active-color: #fff;
-  --bs-btn-active-bg: #4d5154;
-  --bs-btn-active-border-color: #373b3e;
-  --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
-  --bs-btn-disabled-color: #fff;
-  --bs-btn-disabled-bg: #212529;
-  --bs-btn-disabled-border-color: #212529;
+    --bs-btn-bg: #0d6efd;
+    --bs-btn-border-color: #0d6efd;
+    --bs-btn-hover-color: #fff;
+    --bs-btn-hover-bg: #69bcfb;
+    --bs-btn-hover-border-color: #69bcfb;
+    --bs-btn-focus-shadow-rgb: 66, 70, 73;
+    --bs-btn-active-color: #fff;
+    --bs-btn-active-bg: #0091fd;
+    --bs-btn-active-border-color: #0d6efd;
+    --bs-btn-active-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+    --bs-btn-disabled-color: #fff;
+    --bs-btn-disabled-bg: #0d6efd;
+    --bs-btn-disabled-border-color: #0d6efd;
 }
 
 .btn-outline-primary {
@@ -8159,10 +8159,10 @@ textarea.form-control-lg {
   background-color: rgba(var(--bs-light-rgb), var(--bs-bg-opacity)) !important;
 }
 
-.bg-dark {
+/*.bg-dark {
   --bs-bg-opacity: 1;
   background-color: rgba(var(--bs-dark-rgb), var(--bs-bg-opacity)) !important;
-}
+}*/
 
 .bg-black {
   --bs-bg-opacity: 1;
@@ -10827,23 +10827,78 @@ textarea.form-control-lg {
 
 
 .navbar{
-  background-color: rgba(95, 56, 5) !important;
-  position: fixed;
+  background-color: transparent !important;
   width: 100%;
-  z-index: 1000;
+  height: 70px;
 }
 .banner{
-  background-image: url(/img/theme/library.webp);
-  height: 500px;
+  background-image: url(/img/theme/library.jpg);
+  height: 470px;
+  padding: 0px !important;
   text-align: center;
-  background-size: cover;
-  background-attachment: fixed;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-attachment: scroll;
 }
 .cx-titulo{
   height: 100%;
+  width: 100%;
+  max-width: 100% !important;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0px !important;
+}
+.cx-teste{
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.btn-editar{
+  border: none !important;
+  border-radius: 50px ;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+}
+.teste{
+  z-index: 1000;
+}
+.section-buttons-nav1{
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+}
+.section-buttons-nav2{
+  width: 100%;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.btn-log{
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.texto-tit{
+.btn-log a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100px !important;
+  height: 40px !important;
+}
+footer{
+  background-color: #523e02 !important;
+}
+
+@media (max-width: 600px){
+  .banner{
+    background-image: url(/img/theme/library600x300.jpg);
+    background-size: contain !important;
+  }
 }
