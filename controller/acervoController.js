@@ -39,6 +39,8 @@ class AcervoController {
             ok = await exemplarModel.gravarPedido(carrinho)
 
         }
+        res.send({ ok: ok});
+
     } 
 
 }

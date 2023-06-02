@@ -10837,7 +10837,7 @@ textarea.form-control-lg {
   padding: 0px !important;
   text-align: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   background-attachment: scroll;
 }
 .cx-titulo{
@@ -10894,11 +10894,4 @@ textarea.form-control-lg {
 }
 footer{
   background-color: #523e02 !important;
-}
-
-@media (max-width: 600px){
-  .banner{
-    background-image: url(/img/theme/library600x300.jpg);
-    background-size: contain !important;
-  }
 }
