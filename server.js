@@ -52,10 +52,3 @@ app.use('/admin/emprestimo',ExemR.router);
 
 
 
-const server = app.listen('5000', function() {
-<<<<<<< HEAD
-    console.log('http://    localhost:5000');
-=======
-    console.log('http://localhost:5000');
->>>>>>> 8ce84b8f56051b5cef08e5d7886f7387beb1e191
-})
