@@ -31,6 +31,7 @@ class AcervoController {
         res.send({ ok: ok, msg: msg, retorno: retorno })
     }   
     async gravarPedido(req, res){
+<<<<<<< HEAD
         var ok = false;
         var msg = '';
         var carrinho = req.body;
@@ -45,6 +46,17 @@ class AcervoController {
             }
         }
         res.send({ ok: ok, msg: msg});
+=======
+        var ok = true;
+        var carrinho = req.body;
+    
+        if(carrinho != undefined ){
+            let exemplarModel = new ExemplarModel(req.body.id);
+            ok = await exemplarModel.gravarPedido(carrinho)
+
+        }
+        res.send({ ok: ok});
+>>>>>>> 8ce84b8f56051b5cef08e5d7886f7387beb1e191
 
     } 
 

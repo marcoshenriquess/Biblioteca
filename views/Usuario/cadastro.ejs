@@ -6,9 +6,13 @@
 <script src="/js/Usuarios/criar.js"></script>
 <div class="cx-form p-3 mb-5 bg-light rounded">
     <div class="cx-tilt-form">
+<<<<<<< HEAD
         <span>
             <p>Cadastrar Usuário</p>
         </span>
+=======
+        <h1 class="text-center text-black-50 pt-5">Cadastrar Usuarios</h1>
+>>>>>>> 8ce84b8f56051b5cef08e5d7886f7387beb1e191
     </div>
     <form class="cadastro-usu p-3 mb-5 bg-white rounded">
         <div class="alert alert-success" role="alert" id="sucesso" style="display:none; width: 100%;">
@@ -19,24 +23,40 @@
             <div class="label-inpt">
                 <label for="LaNome">Nome:</label>
                 <input class="form-control tam-inpt" type="text" id="inptNome" name="inptNome"
+<<<<<<< HEAD
                     placeholder="Informe o nome">
+=======
+                    onkeyup="verificaNome(this.value)" placeholder="Informe o nome">
+>>>>>>> 8ce84b8f56051b5cef08e5d7886f7387beb1e191
             </div>
             <div class="label-inpt">
                 <label for="LaEmail">E-mail:</label>
                 <input class="form-control tam-inpt" type="email" id="inptEmail" name="inptEmail"
+<<<<<<< HEAD
                     placeholder="Informe o email">
+=======
+                    onkeyup="verificaEmail(this.value)" placeholder="Informe o email">
+>>>>>>> 8ce84b8f56051b5cef08e5d7886f7387beb1e191
             </div>
         </div>
         <div class="cx-inpt-form">
             <div class="label-inpt">
                 <label for="LaCpf">CPF:</label>
+<<<<<<< HEAD
                 <input class="form-control tam-inpt" type="text" id="inptCpf" name="inptCpf"
+=======
+                <input class="form-control tam-inpt" type="text" id="inptCpf" name="inptCpf" onkeyup="validarCPF()"
+>>>>>>> 8ce84b8f56051b5cef08e5d7886f7387beb1e191
                     placeholder="Informe o CPF">
             </div>
             <div class="label-inpt">
                 <label for="LaTell">Telefone:</label>
                 <input class="form-control tam-inpt" type="text" id="inptTelefone" name="inptTelefone"
+<<<<<<< HEAD
                     placeholder="Informe o telefone de contato">
+=======
+                    onkeyup="verificaCel(this.value)" placeholder="Informe o telefone de contato">
+>>>>>>> 8ce84b8f56051b5cef08e5d7886f7387beb1e191
             </div>
         </div>
         <div class="cx-inpt-form">
@@ -49,14 +69,139 @@
                 <label for="TipoUser">O usuario é:</label>
                 <select class="tipo-usu form-select" id="selPerfil">
                     <option value="0">--Selecione--</option>
+<<<<<<< HEAD
                         <% for(let i = 0; i < lista.length; i++)  { %>
                             <option value="<%= lista[i].tipoId %>"><%= lista[i].tipoNome %></option>
+=======
+                    <% for(let i=0; i < lista.length; i++) { %>
+                        <option value="<%= lista[i].tipoId %>">
+                            <%= lista[i].tipoNome %>
+                        </option>
+>>>>>>> 8ce84b8f56051b5cef08e5d7886f7387beb1e191
                         <% } %>
                 </select>
             </div>
         </div>
         <div class="cx-inpt-form cx-bt" style="display: flex; justify-content: end; margin: 10px;">
+<<<<<<< HEAD
             <button type="button" class="btn btn-primary btn-cad" id="btnCadastrarUsuario">Cadastrar</button>
         </div>
     </form>
+=======
+            <button type="button" class="btn btn-primary btn-cad" id="btnCadastrarUsuario" disabled>Cadastrar</button>
+        </div>
+    </form>
+    <script>
+        function validarCPF() {
+            var input = event.target;
+            var cpf = input.value;
+            var ok = 1;
+            var add;
+            cpf
+            if (cpf != "") {
+                cpf = cpf.replace(/[^\d]+/g, '');
+                if (cpf.length != 11 ||
+                    cpf == "00000000000" ||
+                    cpf == "11111111111" ||
+                    cpf == "22222222222" ||
+                    cpf == "33333333333" ||
+                    cpf == "44444444444" ||
+                    cpf == "55555555555" ||
+                    cpf == "66666666666" ||
+                    cpf == "77777777777" ||
+                    cpf == "88888888888" ||
+                    cpf == "99999999999")
+                    ok = 0;
+                if (ok == 1) {
+                    add = 0;
+                    for (i = 0; i < 9; i++)
+                        add += parseInt(cpf.charAt(i)) * (10 - i);
+                    rev = 11 - (add % 11);
+                    if (rev == 10 || rev == 11)
+                        rev = 0;
+                    if (rev != parseInt(cpf.charAt(9)))
+                        ok = 0;
+                    if (ok == 1) {
+                        add = 0;
+                        for (i = 0; i < 10; i++)
+                            add += parseInt(cpf.charAt(i)) * (11 - i);
+                        rev = 11 - (add % 11);
+                        if (rev == 10 || rev == 11)
+                            rev = 0;
+                        if (rev != parseInt(cpf.charAt(10)))
+                            ok = 0;
+                    }
+                }
+                if (ok == 0) {
+                    input.style.color = "red";
+                    //event.target.value = "";
+                    //event.target.focus();
+                    // document.getElementById("btnCadastrarUsuario").disabled = true;
+                }
+                else {
+                    input.style.color = "green";
+                    checkValidations();
+                }
+            }
+        }
+
+        function verificaCel(data) {
+            var retorna = document.getElementById('inptTelefone');
+            const regexCel = new RegExp('^[0-9]{10,11}$');
+            if (regexCel.test(data)) {
+                retorna.style.color = "green"
+                checkValidations();
+            }
+            else {
+                retorna.style.color = "red"
+            }
+        }
+
+        function verificaEmail(data) {
+            var retorna = document.getElementById('inptEmail');
+            const regexEmail = new RegExp(/^(\w+[\-\.])*\w+@(\w+\.)+[A-Za-z]+$/);
+            if (regexEmail.test(data)) {
+                retorna.style.color = "green"
+                checkValidations();
+            }
+            else {
+                retorna.style.color = "red"
+            }
+        }
+
+        function verificaNome() {
+            var inputnome = document.getElementById("inptNome");
+            var nome = document.getElementById("inptNome").value;
+
+            var padrao = /[^a-zà-ú]+$/gi;
+
+            var valida_nome = nome.match(padrao);
+
+            // Nome possui caracteres inválidos ou é vazio
+            if (valida_nome || !nome) {
+                inputnome.style.color = "red";
+            } else {
+                inputnome.style.color = "green";
+                checkValidations();
+            }
+        }
+        function checkValidations() {
+            var nome = document.getElementById("inptNome").style.color;
+            var email = document.getElementById("inptEmail").style.color;
+            var cpf = document.getElementById("inptCpf").style.color;
+            var telefone = document.getElementById("inptTelefone").style.color;
+
+            if (
+                nome === "green" &&
+                email === "green" &&
+                cpf === "green" &&
+                telefone === "green"
+            ) {
+                document.getElementById("btnCadastrarUsuario").disabled = false;
+            } else {
+                document.getElementById("btnCadastrarUsuario").disabled = true;
+            }
+        }
+    </script>
+>>>>>>> 8ce84b8f56051b5cef08e5d7886f7387beb1e191
 </div>
