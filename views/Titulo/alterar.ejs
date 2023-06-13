@@ -1,0 +1,69 @@
+<link rel="stylesheet" href="/css/criar-livro.css">
+
+<div class="cx-form shadow-none p-3 mb-5 bg-light rounded">
+    <div class="cx-tilt-form">
+        <span>
+            <p>Cadastrar Título</p>
+        </span>
+    </div>
+    <form class="cadastro-usu shadow-lg p-3 mb-5 bg-white rounded">
+        <div class="alert alert-success" role="alert" id="sucesso" style="display:none; width: 100%;">
+        </div>
+        <div class="alert alert-danger" role="alert" id="erro" style="display:none; width: 100%;">
+        </div>
+        <input type="hidden" id="titCod" value="<%= titAlt.tituloCod %>">
+        <div class="row w-100">
+            <div class="col-12">
+                <label for="titNome">Titulo:</label>
+                <input class="form-control tam-inpt" value="<%= titAlt.tituloNome %>" type="text" id="titNome"
+                    name="titNome" placeholder="Informe o título">
+            </div>
+
+            <div class="col-12">
+                <label for="titEdicao">Edição:</label>
+                <input class="form-control tam-inpt" type="text" value="<%= titAlt.tituloEdicao %>" id="titEdicao"
+                    name="titEdicao" placeholder="Informe a edição:">
+            </div>
+
+            <div class="col-12">
+                <label for="titAno">Ano:</label>
+                <input class="form-control tam-inpt" type="number" value="<%= titAlt.tituloAno %>" id="titAno"
+                    name="titAno" placeholder="Informe o ano de publicação:">
+            </div>
+
+            <div class="" style="width: 100%;">
+                <label for="titEditora">Editora:</label>
+                <select class="form-control" id="titEditora" name="titEditora">
+                    <% for(let i=0; i < lista.length; i++) { if(lista[i].editoraCod==titAlt.tituloEditora) { %>
+                        <option selected value="<%= lista[i].editoraCod %>">
+                            <%= lista[i].editoraNome %>
+                        </option>
+                        <% } else { %>
+                            <option value="<%= lista[i].editoraCod %>">
+                                <%= lista[i].editoraNome %>
+                            </option>
+                            <% } %>
+                                <% } %>
+                </select>
+            </div>
+
+            <div class="col-12">
+                <label>Imagem do título:</label>
+                <input class="form-control tam-inpt" type="file" id="titImagem" name="titImagem">
+
+                <div>
+                    <img src="/img/Titulos/<%= titAlt.tituloImagem %>" style="width:150px;margin-top: 10px;"
+                        id="imgInput" alt="Imagem do título">
+                </div>
+            </div>
+
+            <div class="cx-inpt-form cx-bt" style="display: flex; justify-content: end; margin: 10px;">
+                <button type="button" class="btn btn-primary btn-cad" id="btnAlterarTitulo">Salvar Alterações</button>
+                <a class="btn btn-secondary btn-cad" href="/admin/titulo/listar">Cancelar</a>
+            </div>
+            
+        </div>
+    </form>
+</div>
+
+<script src="/js/titulo/alterar.js"></script>

@@ -1,0 +1,86 @@
+<link rel="stylesheet" href="/css/listar.css">
+<link rel="stylesheet" href="/css/main.css">
+<style>
+    .itemCarrinho {
+        display: flex;
+        margin: 10px;
+        align-items: center;
+    }
+
+    .descricaoItem {
+        padding: 10px;
+    }
+
+
+
+    .divBotoesCarrinho {
+        display: flex;
+        justify-content: space-around;
+    }
+</style>
+<div class="cx-form p-3 mb-5 bg-light rounded">
+    <h1 class="text-center text-black-50 pt-5">Lista de Títulos</h1>
+
+    <div style="width: 100%;">
+        <a class="btn btn-primary btn-editar" href="/admin/titulo/cadastro">
+            Criar novo registro de título
+        </a>
+        
+        
+        <div style="margin-top:20px;">
+            
+            <div class="table-responsive">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Nome</th>
+                            <th>Edição</th>
+                            <th>Ano</th>
+                            <th>Editora</th>
+                            <th>Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody id="corpoTabela">
+                        <% lista.forEach(function(value, index) { %>
+                            <tr>
+                                <td>
+                                    <%= value.id %>
+                                </td>
+                                <td>
+                                    <%= value.nome %>
+                                </td>
+                                <td>
+                                    <%= value.edicao %>
+                                </td>
+                                <td>
+                                    <%= value.ano %>
+                                </td>
+                                <td>
+                                    <%= value.editora %>
+                                </td>
+                                <td>
+                                    <div style="width: 100% !important; display: flex; justify-content: space-evenly; align-items: center;">
+                                        <button data-id="<%= value.id %>" title="Excluir"
+                                            class="btn btn-danger btnExcluir"><i class="fas fa-trash"></i></button>
+    
+                                        <a href="/admin/titulo/alterar/<%= value.id %>" title="Editar"
+                                            class="btn btn-primary btn-editar">
+                                            <i class="fas fa-pen"></i>
+                                        </a>
+
+                                        
+                                    </div>
+
+                                </td>
+                            </tr>
+                            <% }) %>
+                    </tbody>
+                </table>
+            </div>
+    
+        </div>
+    </div>
+</div>
+
+<script src="/js/titulo/listar.js"></script>

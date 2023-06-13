@@ -1,0 +1,60 @@
+<link rel="stylesheet" href="/css/criar-livro.css">
+
+<div class="cx-form p-3 mb-5 bg-light rounded">
+  <form action="/livro/excluir" method="POST" class="livro-liv p-3 mb-5 bg-white rounded" >
+    <h1 class="text-center text-black-50 pt-5">Lista Livro</h1>
+    <table class="table table-striped ">
+      <div class="row mx-5 mt-5">
+        <thead>
+          <tr>
+              <th>Id</th>
+              <th>Nome</th>
+              <th>Editora</th>
+              <th>Edição</th>
+              <th>Ano</th>
+              <th>Ações</th>
+          </tr>
+      </thead>
+      <tbody id="corpoTabela">
+          <% const responses = lista %>
+          <% lista.forEach(function(value, index) { %>
+                  <tr>
+                      <td><%= value.cod %></td>
+                      <td><%= value.nome %></td>
+                      <td><%= value.editora %></td>
+                      <td><%= value.edicao %></td>
+                      <td><%= value.ano %></td>
+                      <td>
+                        <div>
+                          <button data-id="<%= value.cod %>" title="Excluir" class="btn btn-danger btnExcluir"><i class="fas fa-trash"></i></button>
+                          <a href="/livro/alterar/<%= value.livroId %>" title="Editar" class="btn btn-primary">
+                              <i class="fas fa-pen"></i>
+                          </a>
+                        </div>
+                      </td>
+                  </tr>   
+              <% }) %>        
+      </tbody>
+        <hr>
+      </div>
+    </table>
+  </form>
+</div>
+
+<script src="/js/livro/criar.js"></script>
+
+
+
+
+
+
+
+
+
+
+<!--<section class="cx-scroll">
+  <h1 class="text-center text-black-50 pt-5">Lista Livros</h1>
+  
+</section>-->
+
+<script src="/js/livro/listar.js"></script>

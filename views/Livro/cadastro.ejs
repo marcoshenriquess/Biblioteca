@@ -1,0 +1,48 @@
+<link rel="stylesheet" href="/css/criar-livro.css">
+
+<div class="cx-form p-3 mb-5 bg-light rounded">
+    <div class="cx-tilt-form">
+        <span>
+            <p>Cadastrar Livro</p>
+        </span>
+    </div>
+    <form class="cadastro-usu p-3 mb-5 bg-white rounded">
+        <div class="row w-100">
+            <div class="col-12">
+                <label for="titulo">Titulo:</label>
+                <input class="form-control tam-inpt" type="text" id="titulo" name="titulo"
+                    placeholder="Informe o titulo">
+            </div>
+
+
+            <div class="col-12">
+                <label for="editora">Editora:</label>
+                <select class="form-control" id="selMarca">
+                    <option value="0">--Selecione--</option>
+                    <option value="1">TESTE</option>                
+                  </select>
+            </div>
+            <div class="col-12">
+                <label for="editora">Edição:</label>
+                <input class="form-control tam-inpt" type="text" id="editora" name="editora"
+                    placeholder="Informe a Editora">
+            </div>
+            <div class="col-12">
+                <label for="editora">Ano:</label>
+                <input class="form-control tam-inpt" type="date" id="editora" name="editora"
+                    placeholder="Informe a Editora">
+            </div>
+
+            <div class="cx-inpt-form cx-bt" style="display: flex; justify-content: end; margin: 10px;">
+                <button type="button" class="btn btn-primary btn-cad" id="btnCadastrarLivro" >Cadastrar</button>
+                <button type="submit" class="btn btn-primary btn-can">Cancelar</button>
+            </div>
+            <div class="alert alert-success" role="alert" id="sucesso" style="display:none;" > 
+            </div>
+            <div class="alert alert-danger" role="alert" id="erro" style="display:none">      
+            </div>
+        </div>
+    </form>
+</div>
+
+<script src="/js/livro/criar.js"></script>

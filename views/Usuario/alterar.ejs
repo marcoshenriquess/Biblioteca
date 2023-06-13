@@ -1,0 +1,67 @@
+<style>
+    .campoErro {
+        border-color: red;
+    }
+</style>
+<script src="/js/Usuarios/alterar.js"></script>
+<div class="cx-form p-3 mb-5 bg-light rounded">
+    <div class="cx-tilt-form">
+        <span>
+            <p>Alterar Usuário</p>
+        </span>
+    </div>
+    <form class="cadastro-usu p-3 mb-5 bg-white rounded">
+        <div class="alert alert-success" role="alert" id="sucesso" style="display:none; width: 100%;">
+        </div>
+        <div class="alert alert-danger" role="alert" id="erro" style="display:none; width: 100%;">
+        </div>
+        <div class="cx-inpt-form">
+            <div class="label-inpt">
+                <input type="hidden" id="inptId" value="<%= AltUsu.usuarioCod %>">
+                <label for="LaNome">Nome:</label>
+                <input class="form-control tam-inpt" value="<%= AltUsu.usuarioNome %>" type="text" id="inptNome" name="inptNome"
+                    placeholder="Informe o nome">
+            </div>
+            <div class="label-inpt">
+                <label for="LaEmail">E-mail:</label>
+                <input class="form-control tam-inpt" value="<%= AltUsu.usuarioEmail %>" type="email" id="inptEmail" name="inptEmail"
+                    placeholder="Informe o email">
+            </div>
+        </div>
+        <div class="cx-inpt-form">
+            <div class="label-inpt">
+                <label for="LaCpf">CPF:</label>
+                <input class="form-control tam-inpt" value="<%= AltUsu.usuarioCpf %>" type="text" id="inptCpf" name="inptCpf"
+                    placeholder="Informe o CPF">
+            </div>
+            <div class="label-inpt">
+                <label for="LaTell">Telefone:</label>
+                <input class="form-control tam-inpt" value="<%= AltUsu.usuarioTelefone %>" type="text" id="inptTelefone" name="inptTelefone"
+                    placeholder="Informe o telefone de contato">
+            </div>
+        </div>
+        <div class="cx-inpt-form">
+            <div class="label-inpt">
+                <label for="LaSenha">Senha:</label>
+                <input class="form-control tam-inpt" value="<%= AltUsu.usuarioSenha %>" type="password" id="inptSenha" name="inptSenha"
+                    placeholder="Informe a Senha">
+            </div>
+            <div class="label-inpt">
+                <label for="TipoUser">O usuario é:</label>
+                <select class="tipo-usu form-select" id="selPerfil">
+                    <option value="0">--Selecione--</option>
+                        <% for(let i = 0; i < lista.length; i++)  { %>
+                            <% if(AltUsu.tipoCod == lista[i].tipoCod) {%>
+                                <option selected value="<%= lista[i].tipoId %>"><%= lista[i].tipoNome %></option>`
+                            <% } else { %>
+                                <option value="<%= lista[i].tipoId %>"><%= lista[i].tipoNome %></option>`
+                            <% } %>
+                        <% } %>
+                </select>
+            </div>
+        </div>
+        <div class="cx-inpt-form cx-bt" style="display: flex; justify-content: end; margin: 10px;">
+            <button type="button" class="btn btn-primary btn-cad" id="btnAlterarUsuario">Alterar</button>
+        </div>
+    </form>
+</div>
