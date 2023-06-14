@@ -2964,11 +2964,11 @@ textarea.form-control-lg {
 
 .btn-dark {
   --bs-btn-color: #fff;
-    --bs-btn-bg: #0d6efd;
-    --bs-btn-border-color: #0d6efd;
+    --bs-btn-bg: #664d03;
+    --bs-btn-border-color: #664d03;
     --bs-btn-hover-color: #fff;
-    --bs-btn-hover-bg: #69bcfb;
-    --bs-btn-hover-border-color: #69bcfb;
+    --bs-btn-hover-bg: #cbba89;
+    --bs-btn-hover-border-color: #cbba89;
     --bs-btn-focus-shadow-rgb: 66, 70, 73;
     --bs-btn-active-color: #fff;
     --bs-btn-active-bg: #0091fd;
