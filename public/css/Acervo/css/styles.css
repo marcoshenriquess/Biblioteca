@@ -10895,3 +10895,14 @@ textarea.form-control-lg {
 footer{
   background-color: #523e02 !important;
 }
+
+
+.card{
+  display: flex !important;
+}
+.card-body{
+  flex: 1 !important;
+}
+.card-img-top{
+  flex: 2 !important; 
+}

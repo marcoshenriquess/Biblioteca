@@ -1,18 +1,13 @@
-<<<<<<< HEAD
 const EmprestimoModel = require("../models/emprestimoModel");
-const ExemplarModel = require("../models/exemplarModel");
 
-=======
->>>>>>> 8ce84b8f56051b5cef08e5d7886f7387beb1e191
 class EmprController{
     constructor(){
 
     }
 
-    EmpreCad(req,res){
-        res.render("emprestimo/emprestimo", { });
+    Emprestimo(req,res){
+        res.render("emprestimo/home", { });
     }
-<<<<<<< HEAD
     async ListarEmprestimos(req, res){
         let emprestimo = new EmprestimoModel();
         let listaEmprestimos = await emprestimo.listarEmprestimos();
@@ -28,10 +23,7 @@ class EmprController{
                 usuarioCod: listaEmprestimos[i].usuarioCod,
             })
         }
-        console.log(listaEmpr)
-        res.render("Emprestimo/emprestimo", {lista: listaEmpr});
+        res.render("emprestimo/listar", {lista: listaEmpr});
     }
-=======
->>>>>>> 8ce84b8f56051b5cef08e5d7886f7387beb1e191
 }
 module.exports = EmprController;

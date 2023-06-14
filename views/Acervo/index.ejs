@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-<<<<<<< HEAD
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -21,34 +20,6 @@
         <header class="banner"> <nav class="navbar navbar-expand-lg navbar-light bg-light nav-edit">
             <div class="container px-4 px-lg-5">
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-=======
-
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
-    <title>Acervo da Biblioteca</title>
-    <!-- Favicon-->
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="/css/Acervo/css/styles.css" rel="stylesheet" />
-
-</head>
-
-<body>
-    <!-- Navigation-->
-
-    <!-- Header-->
-    <header class="banner">
-        <nav class="navbar navbar-expand-lg navbar-light bg-light nav-edit">
-            <div class="container px-4 px-lg-5">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation"><span
-                        class="navbar-toggler-icon"></span></button>
->>>>>>> 8ce84b8f56051b5cef08e5d7886f7387beb1e191
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
                     </ul>
@@ -59,52 +30,20 @@
                             <span id="contadorCarrinho" class="badge bg-dark text-white ms-1 rounded-pill">0</span>
                         </button>-->
                         <section class="section-buttons-nav1">
-<<<<<<< HEAD
                             <button data-bs-toggle="modal" data-bs-target="#carrinhoModal" class="btn btn-primary position-relative btn-editar">
                                 <i class="bi-cart-fill"></i>
                                 <span id="contadorCarrinho" class="badge bg-red text-white position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">0<span class="visually-hidden">unread messages</span></span>
-=======
-                            <button data-bs-toggle="modal" data-bs-target="#carrinhoModal"
-                                class="btn btn-primary position-relative btn-editar">
-                                <i class="bi-cart-fill"></i>
-                                <span id="contadorCarrinho"
-                                    class="badge bg-red text-white position-absolute top-0 start-100 translate-middle badge rounded-pill bg-secondary">0<span
-                                        class="visually-hidden">unread messages</span></span>
->>>>>>> 8ce84b8f56051b5cef08e5d7886f7387beb1e191
                             </button>
                         </section>
 
                         <section class="section-buttons-nav2">
-<<<<<<< HEAD
-                            <div style="margin-left: 10px;" class="btn-log">
-                                <a class="btn btn-dark" href="/login"> <i class="bi bi-person-fill"></i> Login</a>
-                            </div>
-                        </section>
-
-                        
-                        <div class="modal fade" id="carrinhoModal" tabindex="-1" aria-labelledby="carrinhoModalLabel" aria-hidden="true">
-                            <div class="modal-dialog modal-lg">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h5 class="modal-title" id="carrinhoModalLabel"><i class="bi-cart-fill me-1"></i> Carrinho de compras</h5>
-                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                        
-=======
-                            <% if (usuarioLogado) { %>
-                                <div style="margin-left: 10px;" class="btn-log">
-                                    <a class="btn btn-dark" href="#">
-                                        <i class="bi bi-person-fill"></i>
-                                        <%= usuarioLogado.nome %> <!-- Exibe o nome do usuário logado -->
-                                    </a>
-                                </div>
-                                <% } else { %>
+                            
                                     <div style="margin-left: 10px;" class="btn-log">
                                         <a class="btn btn-dark" href="/login">
                                             <i class="bi bi-person-fill"></i>
                                             Login
                                         </a>
                                     </div>
-                                    <% } %>
                         </section>
 
 
@@ -118,7 +57,6 @@
                                         <button type="button" class="btn-close" data-bs-dismiss="modal"
                                             aria-label="Close"></button>
 
->>>>>>> 8ce84b8f56051b5cef08e5d7886f7387beb1e191
                                     </div>
                                     <div class="modal-body" id="corpoModal">
                                         <div class="table-responsive">
@@ -126,25 +64,17 @@
                                                 <thead>
                                                     <tr>
                                                         <th>Descrição</th>
-<<<<<<< HEAD
-                                                    </tr>
-                                                </thead>
-                                                <tbody id="corpoTabelaCarrinho">
-                
-=======
                                                         <th>Quantidade</th>
                                                         <th>Ações</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody id="corpoTabelaCarrinho">
 
->>>>>>> 8ce84b8f56051b5cef08e5d7886f7387beb1e191
                                                 </tbody>
                                             </table>
                                         </div>
                                     </div>
                                     <label for="dateDataPrevista">Data de devolução:</label>
-<<<<<<< HEAD
                                         <input type="date" id="dateDataPrevista" name="dateDataPrevista"
                                             value="2023-06-01"
                                             min="2022-06-01" max="2023-12-31">
@@ -155,19 +85,6 @@
                                         <hr>
                                         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
                                         <button type="button" id="btnGravarPedido" class="btn btn-primary">Confirmar</button>
-=======
-                                    <input type="date" id="dateDataPrevista" name="dateDataPrevista" value="2023-06-01"
-                                        min="2022-06-01" max="2023-12-31">
-                                    <div class="modal-footer" style="display:block;">
-                                        <div id="valorTotalCarrinho" style="text-align:end;">
-
-                                        </div>
-                                        <hr>
-                                        <button type="button" class="btn btn-secondary"
-                                            data-bs-dismiss="modal">Fechar</button>
-                                        <button type="button" id="btnGravarPedido"
-                                            class="btn btn-primary">Confirmar</button>
->>>>>>> 8ce84b8f56051b5cef08e5d7886f7387beb1e191
                                     </div>
                                 </div>
                             </div>
@@ -176,11 +93,9 @@
                 </div>
             </div>
         </nav>
-<<<<<<< HEAD
             <div class="container cx-titulo px-4 px-lg-5">
                 <div class="text-center text-white texto-tit">
                     <h1 class="display-4 fw-bolder">BIBLIOTECA DO CENTRO UNIVERSITÁRIO</h1>
-                    <p class="lead fw-normal text-white-50 mb-0">Seja bem-vindo!</p>
                 </div>
             </div>
         </header>
@@ -198,9 +113,6 @@
                                 <div class="card-body p-4">
                                     <div class="text-center">
                                         <!-- Product name-->
-                                        <div class="d-flex justify-content-center small mb-2">
-                                            <%= value.tituloNome %>
-                                        </div>
                                         <h5 class="fw-bolder"><%= value.tituloNome %></h5>
                                         <div class="d-flex justify-content-center small mb-2">
                                             <%= value.tituloAno %>
@@ -220,54 +132,6 @@
   
             <!-- Modal -->
             <!--<div class="modal fade" id="carrinhoModal" tabindex="-1" aria-labelledby="carrinhoModalLabel" aria-hidden="true">
-=======
-        <div class="container cx-titulo px-4 px-lg-5">
-            <div class="text-center text-white texto-tit">
-                <h1 class="display-4 fw-bolder">BIBLIOTECA DO CENTRO UNIVERSITÁRIO</h1>
-                <p class="lead fw-normal text-white-50 mb-0">Seja bem-vindo!</p>
-            </div>
-        </div>
-    </header>
-    <!-- Section-->
-    <section class="py-5">
-        <div class="container px-4 px-lg-5 mt-5">
-            <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-
-                <% titulos.map(function(value, index) { %>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img class="card-img-top" src="<%= global.TITULO_IMG_CAMINHO + value.tituloImagem %>"
-                                alt="Imagem do titulo" />
-                            <!-- Product details-->
-                            <div class="card-body p-4">
-                                <div class="text-center">
-                                    <!-- Product name-->
-                                    <div class="d-flex justify-content-center small mb-2">
-                                        <%= value.tituloNome %>
-                                    </div>
-                                    <h5 class="fw-bolder">
-                                        <%= value.tituloNome %>
-                                    </h5>
-                                    <div class="d-flex justify-content-center small mb-2">
-                                        <%= value.tituloAno %>
-                                    </div>
-                                    <a data-id="<%= value.tituloCod %>" title="Adicionar"
-                                        class="btn btn-primary btnAddCarrinho">
-                                        Adicionar ao Carrinho
-                                        <i class="fas fa-plus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <% }) %>
-            </div>
-        </div>
-
-        <!-- Modal -->
-        <!--<div class="modal fade" id="carrinhoModal" tabindex="-1" aria-labelledby="carrinhoModalLabel" aria-hidden="true">
->>>>>>> 8ce84b8f56051b5cef08e5d7886f7387beb1e191
                 <div class="modal-dialog modal-lg">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -302,20 +166,6 @@
                     </div>
                 </div>
             </div>-->
-<<<<<<< HEAD
-        </section>
-        <!-- Footer-->
-        <footer class="py-5 bg-dark footer">
-            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Biblioteca 2023</p></div>
-        </footer>
-        <!-- Bootstrap core JS-->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-        <!-- Core theme JS-->
-         <!--<script src="/js/Acervo/scripts.js"></script>-->
-       <script src="/js/Acervo/carrinho.js"></script>
-    </body>
-</html>
-=======
     </section>
     <!-- Footer-->
     <footer class="py-5 bg-dark footer">
@@ -331,4 +181,3 @@
 </body>
 
 </html>
->>>>>>> 8ce84b8f56051b5cef08e5d7886f7387beb1e191

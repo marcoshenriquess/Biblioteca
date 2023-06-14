@@ -57,7 +57,6 @@ function gravarPedido() {
     else{
         alert("Carrinho vazio!!!");
     }
-<<<<<<< HEAD
     if(r.ok){
         alert("Pedido gravado com sucesso");
         //remove tudo do localStorage
@@ -72,56 +71,6 @@ function gravarPedido() {
     }
 }
 
-=======
-}
-
-
-
-function aumentarQtde(id) {
-
-    let carrinho = localStorage.getItem('carrinho');
-    if(carrinho != null && carrinho != ''){
-        let listaCarrinho = JSON.parse(carrinho);
-        let qtdeAtual = 0;
-
-        for(let i = 0; i<listaCarrinho.length; i++){
-            if(id == listaCarrinho[i].id){
-                listaCarrinho[i].quantidade += 1;
-                qtdeAtual = listaCarrinho[i].quantidade;
-            }
-        }
-        
-        localStorage.setItem('carrinho', JSON.stringify(listaCarrinho));
-        //carregarCarrinho();
-        document.getElementById("inputQtde-" + id).value = parseInt(qtdeAtual);
-       
-    }
-}
-
-function diminuirQtde(id) {
-    let carrinho = localStorage.getItem('carrinho');
-    if(carrinho != null && carrinho != ''){
-        let listaCarrinho = JSON.parse(carrinho);
-        let qtdeAtual = 0;
-
-        for(let i = 0; i<listaCarrinho.length; i++){
-            if(id == listaCarrinho[i].id) {
-                
-                if(listaCarrinho[i].quantidade > 1){
-                    listaCarrinho[i].quantidade -= 1;
-                }
-                
-                qtdeAtual = listaCarrinho[i].quantidade;
-            }
-        }
-        
-        localStorage.setItem('carrinho', JSON.stringify(listaCarrinho));
-        //carregarCarrinho();
-        document.getElementById("inputQtde-" + id).value = parseInt(qtdeAtual);
-      
-    }
-}
->>>>>>> 8ce84b8f56051b5cef08e5d7886f7387beb1e191
 
 function excluirItem(id) {
 
@@ -156,23 +105,10 @@ function carregarCarrinho() {
                                             <div class='descricaoItem'>
                                                 <div> ${obj.id} </div>
                                                 <div> ${obj.nome} </div>
-<<<<<<< HEAD
-=======
-                                                <div> ${obj.quantidade} </div>
-
->>>>>>> 8ce84b8f56051b5cef08e5d7886f7387beb1e191
                                             </div>
                                         </div>
                                     </td>
                                     <td>
-<<<<<<< HEAD
-=======
-                                        <div class='divBotoesCarrinho'>
-                                            <button class='btn btn-secondary aumentarQtde' onclick='aumentarQtde(${obj.id})'>+</button>
-                                            <input id='inputQtde-${obj.id}' onchange='mudaInputValue(${obj.id})' style='width:50px;' class='form-control' value='${obj.quantidade}'/>
-                                            <button class='btn btn-secondary diminuirQtde' onclick='diminuirQtde(${obj.id})'>-</button>
-                                        </div>
->>>>>>> 8ce84b8f56051b5cef08e5d7886f7387beb1e191
                                     </td>
                                     <td>
                                         <div>

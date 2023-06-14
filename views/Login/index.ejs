@@ -12,16 +12,18 @@
     <title>Login - Fullstack 1</title>
 
     <!-- Custom fonts for this template-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link href="/css/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
   <!-- Theme style -->
-  <link rel="stylesheet" href="/css/adminlte.min.css">
+  <link rel="stylesheet" href="/css/login.css">
+  <link rel="stylesheet" href="/css/criar-livro.css">
 
 </head>
 
-<body class="bg-gradient-primary">
+<body style="display: flex; justify-content: center; align-items: center; height: 100vh;">
 
     <div class="container">
 
@@ -40,26 +42,21 @@
                                         <h3>Bem vindo!</h3>
                                     </div>
                                     <form action="/login" method="POST" class="user">
-                                        <div class="form-group">
-                                            <input type="email" class="form-control form-control-user"
+                                        <div class="form-floating mb-3">
+                                            <input type="email" class="form-control tam-inpt"
                                                 id="inputEmail" name="inputEmail" aria-describedby="emailHelp"
                                                 placeholder="Digite seu email">
+                                          <label for="inputEmail3">Email</label>
                                         </div>
-                                        <div class="form-group">
-                                            <input type="password" class="form-control form-control-user"
+                                        <div class="form-floating mb-3">
+                                            <input type="password" class="form-control tam-inpt"
                                                 id="inputPassword" name="inputPassword" placeholder="Digite sua senha">
+                                          <label for="inputPassword3">Password</label>
                                         </div>
-                                        <div class="form-group">
-                                            <div style="color: black;" class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
-                                                <label class="custom-control-label" for="customCheck">Lembrar-me</label>
-                                            </div>
-                                        </div>
-                                        <button type="submit" class="btn btn-primary btn-user btn-block">
+                                        <button type="submit" class="btn btn-primary">
                                             Entrar
                                         </button>
                                     </form>
-                                    <hr>
                                     <% if (typeof msgErro != "undefined") { %>
                                         <span style="color:red"><%= msgErro %></span>
                                     <% } %>
@@ -68,19 +65,7 @@
                         </div>
                     </div>
                 </div>
-
             </div>
-
         </div>
-
     </div>
-<!-- jQuery -->
-<script src="/js/jquery/jquery.min.js"></script>
-<!-- jQuery UI 1.11.4 -->
-<!-- Bootstrap 4 -->
-<script src="/js/bootstrap/js/bootstrap.bundle.min.js"></script>
-<!-- AdminLTE App -->
-<script src="/js/adminlte.min.js"></script>
-</body>
-
 </html>

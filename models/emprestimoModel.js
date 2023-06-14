@@ -57,7 +57,7 @@ class EmprestimoModel {
 
 
     async listarEmprestimos() {
-        let sql =`select emp_cod,emp_data,emp_data_devo,usuario_usu_cod,exemplar_has_emprestimo.nome_titulo from emprestimo
+        let sql =`select emp_cod,Date(emp_data),Date(emp_data_devo),usuario_usu_cod,exemplar_has_emprestimo.nome_titulo from emprestimo
         inner join exemplar_has_emprestimo on exemplar_has_emprestimo.emp_num = emprestimo.emp_cod 
         inner join exemplar on exemplar.exe_cod = exemplar_has_emprestimo.exemplar_exe_cod
         inner join titulo on titulo.tit_cod = exemplar.titulo_tit_cod`;
@@ -66,7 +66,7 @@ class EmprestimoModel {
 
         for(var i= 0; i < rows.length; i++){
             let row = rows[i];
-            listaRetorno.push(new EmprestimoModel(row["emp_cod"], row["emp_data"], row["emp_data_devo"],row["usuario_usu_cod"],row["nome_titulo"]));
+            listaRetorno.push(new EmprestimoModel(row["emp_cod"], row["Date(emp_data)"], row["Date(emp_data_devo)"],row["usuario_usu_cod"],row["nome_titulo"]));
         }
 
         return listaRetorno;
